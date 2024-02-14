@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 ruby file: ".ruby-version"
 
-# Use local checkout of Rails
 gem "rails", github: "rails/rails"
 
 # Drivers
