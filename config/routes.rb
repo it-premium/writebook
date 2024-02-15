@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :leafs
+    resources :pages
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
