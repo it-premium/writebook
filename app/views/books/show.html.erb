@@ -1,5 +1,12 @@
 <h1><%= @book.title %></h1>
 
-<%= link_to "New page", new_book_page_path(@book) %>
+<ul>
+  <% @leafs.each do |leaf| %>
+    <li><%= link_to leaf.title, leafable_path(leaf) %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to "New page", new_book_page_path(@book) %><br>
 
 <%= link_to "Back", books_path %>

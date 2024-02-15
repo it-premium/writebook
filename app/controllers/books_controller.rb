@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    @leafs = @book.leafs.roots.with_leafables
   end
 
   private
