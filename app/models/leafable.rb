@@ -6,4 +6,14 @@ module Leafable
   included do
     has_one :leaf, as: :leafable, inverse_of: :leafable, touch: true
   end
+
+  class_methods do
+    def leafable_name
+      @leafable_name ||= ActiveModel::Name.new(self).singular.inquiry
+    end
+  end
+
+  def leafable_name
+    self.class.leafable_name
+  end
 end
