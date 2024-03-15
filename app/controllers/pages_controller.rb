@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def create
-    leaf = @book.press new_page
+    @book.press new_page
     redirect_to @book
   end
 
