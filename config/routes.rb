@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   end
 
   direct :leafable do |leaf, options|
-    route_for "book_#{leaf.leafable_name}", leaf.book, leaf, options
+    route_for "book_#{leaf.leafable_name}", leaf.book, leaf.leafable, options
   end
 
   direct :edit_leafable do |leaf, options|
-    route_for "edit_book_#{leaf.leafable_name}", leaf.book, leaf, options
+    route_for "edit_book_#{leaf.leafable_name}", leaf.book, leaf.leafable, options
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
