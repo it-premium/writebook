@@ -1,5 +1,5 @@
 <%= form_with model: [ book, picture ] do |form| %>
-  <%= form.text_field :title %><br>
+  <%= form.text_field :title, required: true, autofocus: true %><br>
   <%= form.file_field :image %><br>
   <%= form.submit "Save" %>
 <% end %>
