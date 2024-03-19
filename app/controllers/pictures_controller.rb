@@ -27,7 +27,7 @@ class PicturesController < ApplicationController
   end
 
   private
-    def picture_params
+    def new_picture
       Picture.new picture_params
     end
 
