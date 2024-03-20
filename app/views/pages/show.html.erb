@@ -12,7 +12,12 @@
     <strong><%= @page.title %></strong>
   </div>
 
-  <button class="btn flex-item-justify-end">
+  <button class="btn flex-item-justify-end" data-action="fullscreen#toggle">
+    <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Enter fullscreen</span>
+  </button>
+
+  <button class="btn">
     <%= image_tag "bookmark.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Bookmark</span>
   </button>
