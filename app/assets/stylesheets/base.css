@@ -172,10 +172,7 @@ body > footer {
 }
 
 :where(.breadcrumbs) {
-  background-color: var(--color-bg);
-  border-radius: 2em;
   min-width: 0;
-  padding: var(--inline-space) var(--block-space);
 
   > * {
     white-space: nowrap;

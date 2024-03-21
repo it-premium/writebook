@@ -13,24 +13,17 @@
   justify-content: center;
   padding: var(--btn-padding, 0.5em 1.1em);
   pointer-events: auto;
-  text-align: center;
-
-  img {
-    -webkit-touch-callout: none;
-    user-select: none;
-  }
 
   /* Default icon styles */
   &:where(:has(img)) {
     text-align: start;
 
     img {
-      inline-size: 1.3em;
-      max-inline-size: unset;
-    }
-
-    img {
+      -webkit-touch-callout: none;
       filter: invert(0);
+      inline-size: calc(var(--btn-size) / 2);
+      max-inline-size: unset;
+      user-select: none;
 
       @media (prefers-color-scheme: dark) {
         filter: invert(100%);

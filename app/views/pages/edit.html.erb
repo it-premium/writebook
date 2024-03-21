@@ -25,5 +25,38 @@
 </main>
 
 <footer>
-  <%= render "leaves/delete", leaf: @leaf %>
+  <menu class="editor-toolbar flex gap border fill-black flex-item-justify-end">
+    <button type="button" class="btn btn--plain btn--reversed">
+      <%= image_tag "text-bold.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+      <span class="for-screen-reader">Text style: bold</span>
+    </button>
+    <button type="button" class="btn btn--plain btn--reversed">
+      <%= image_tag "text-italic.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+      <span class="for-screen-reader">Text style: italic</span>
+    </button>
+    <button type="button" class="btn btn--plain btn--reversed">
+      <%= image_tag "text-quote.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+      <span class="for-screen-reader">Text style: quote</span>
+    </button>
+    <button type="button" class="btn btn--plain btn--reversed">
+      <%= image_tag "text-code.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+      <span class="for-screen-reader">Text style: code</span>
+    </button>
+    <button type="button" class="btn btn--plain btn--reversed">
+      <%= image_tag "text-bullets.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+      <span class="for-screen-reader">Text style: bulleted list</span>
+    </button>
+    <button type="button" class="btn btn--plain btn--reversed">
+      <%= image_tag "text-numbers.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+      <span class="for-screen-reader">Text style: numbered list</span>
+    </button>
+    <button type="button" class="btn btn--plain btn--reversed">
+      <%= image_tag "text-image.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+      <span class="for-screen-reader">Text add image</span>
+    </button>
+  </menu>
+
+  <span class="flex-item-justify-end">
+    <%= render "leaves/delete", leaf: @leaf %>
+  </span>
 </footer>
