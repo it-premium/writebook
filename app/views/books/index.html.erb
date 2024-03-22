@@ -1,22 +1,22 @@
-<nav>
-  <%= link_to new_book_path, class: "btn flex-item-justify-end" do %>
-    <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Create a new book</span>
+<section class="books">
+  <% @books.each do |book| %>
+    <figure class="book">
+      <%= link_to book do %>
+        <%= image_tag "default-cover.svg", alt: "Book cover", class: "book-cover" %>
+        <h2>
+          <strong><%= book.title %></strong>
+          <small class="translucent">Author</small>
+        </h2>
+      <% end %>
+    </figure>
   <% end %>
-</nav>
+</section>
 
-<main>
-  <section class="books">
-    <% @books.each do |book| %>
-      <figure class="book">
-        <%= link_to book do %>
-          <%= image_tag "default-cover.svg", alt: "Book cover", class: "book-cover" %>
-          <h2>
-            <strong><%= book.title %></strong>
-            <small class="translucent">Author</small>
-          </h2>
-        <% end %>
-      </figure>
+<% content_for :footer do %>
+  <nav>
+    <%= link_to new_book_path, class: "btn" do %>
+      <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Create a new book</span>
     <% end %>
-  </section>
-</main>
+  </nav>
+<% end %>

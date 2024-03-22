@@ -1,62 +1,62 @@
-<nav>
-  <%= link_to leafable_path(@leaf), class: "btn flex-item-justify-start" do %>
-    <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Go back</span>
-  <% end %>
+<% content_for :header do %>
+  <nav>
+    <%= link_to leafable_path(@leaf), class: "btn flex-item-justify-start" do %>
+      <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Cancel</span>
+    <% end %>
 
-  <div class="flex gap breadcrumbs align-end" style="--column-gap: 0.5ch;">
-    <%= link_to books_path do %>
-      <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-    <% end %> ▸
-    <%= link_to @book.title, @book %> ▸
-    <strong><%= @page.title %></strong>
-  </div>
+    <div class="breadcrumbs">
+      <%= link_to books_path do %>
+        <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
+      <% end %> ▸
+      <%= link_to @book.title, @book %> ▸
+      <strong><%= @page.title %></strong>
+    </div>
 
-  <button type="submit" form="page-editor", class="btn flex-item-justify-end">
-    <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Save</span>
-  </button>
-</nav>
+    <button type="submit" form="page-editor", class="btn flex-item-justify-end">
+      <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Save</span>
+    </button>
+  </nav>
+<% end %>
 
-<main>
-  <div class="page">
-    <%= render "pages/form", book: @book, page: @page %>
-  </div>
-</main>
+<div class="page">
+  <%= render "pages/form", book: @book, page: @page %>
+</div>
 
-<footer>
-  <menu class="button-bar flex gap border fill-black flex-item-justify-end">
-    <button type="button" class="btn btn--plain btn--reversed">
-      <%= image_tag "text-bold.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+<% content_for :footer do %>
+  <nav>
+    <button type="button" class="btn btn--plain flex-item-justify-end">
+      <%= image_tag "text-bold.svg", aria: { hidden: "true" }, size: "30" %>
       <span class="for-screen-reader">Text style: bold</span>
     </button>
-    <button type="button" class="btn btn--plain btn--reversed">
-      <%= image_tag "text-italic.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+    <button type="button" class="btn btn--plain">
+      <%= image_tag "text-italic.svg", aria: { hidden: "true" }, size: "30" %>
       <span class="for-screen-reader">Text style: italic</span>
     </button>
-    <button type="button" class="btn btn--plain btn--reversed">
-      <%= image_tag "text-quote.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+    <button type="button" class="btn btn--plain">
+      <%= image_tag "text-quote.svg", aria: { hidden: "true" }, size: "30" %>
       <span class="for-screen-reader">Text style: quote</span>
     </button>
-    <button type="button" class="btn btn--plain btn--reversed">
-      <%= image_tag "text-code.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+    <button type="button" class="btn btn--plain">
+      <%= image_tag "text-code.svg", aria: { hidden: "true" }, size: "30" %>
       <span class="for-screen-reader">Text style: code</span>
     </button>
-    <button type="button" class="btn btn--plain btn--reversed">
-      <%= image_tag "text-bullets.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+    <button type="button" class="btn btn--plain">
+      <%= image_tag "text-bullets.svg", aria: { hidden: "true" }, size: "30" %>
       <span class="for-screen-reader">Text style: bulleted list</span>
     </button>
-    <button type="button" class="btn btn--plain btn--reversed">
-      <%= image_tag "text-numbers.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+    <button type="button" class="btn btn--plain">
+      <%= image_tag "text-numbers.svg", aria: { hidden: "true" }, size: "30" %>
       <span class="for-screen-reader">Text style: numbered list</span>
     </button>
-    <button type="button" class="btn btn--plain btn--reversed">
-      <%= image_tag "text-image.svg", aria: { hidden: "true" }, size: "30", class: "colorize--white" %>
+    <button type="button" class="btn btn--plain">
+      <%= image_tag "text-image.svg", aria: { hidden: "true" }, size: "30" %>
       <span class="for-screen-reader">Text add image</span>
     </button>
-  </menu>
 
-  <span class="flex-item-justify-end">
-    <%= render "leaves/delete", leaf: @leaf %>
-  </span>
-</footer>
+    <span class="flex-item-justify-end">
+      <%= render "leaves/delete", leaf: @leaf %>
+    </span>
+  </nav>
+<% end %>

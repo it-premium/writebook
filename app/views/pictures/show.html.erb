@@ -1,33 +1,12 @@
-<nav>
-  <%= link_to @book, class: "btn flex-item-justify-start" do %>
-    <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Go back</span>
-  <% end %>
+<% content_for :header do %>
+  <%= render "leaves/header", book: @book, leaf: @leaf %>
+<% end %>
 
-  <div class="flex gap breadcrumbs align-end" style="--column-gap: 0.5ch;">
-    <%= link_to books_path do %>
-      <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-    <% end %> ▸
-    <%= link_to @book.title, @book %> ▸
-    <strong><%= @picture.title %></strong>
-  </div>
+<div class="page">
+  <h1><%= @picture.title %></h1>
+  <%= image_tag @picture.image.variant(:large) %>
+</div>
 
-  <button class="btn flex-item-justify-end">
-    <%= image_tag "bookmark.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Bookmark</span>
-  </button>
-
-  <%= link_to edit_leafable_path(@leaf), class: "btn" do %>
-    <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Edit</span>
-  <% end %>
-</nav>
-
-<main>
-  <div class="page">
-    <h1><%= @picture.title %></h1>
-    <%= image_tag @picture.image.variant(:large) %>
-  </div>
-</main>
-
-<%= render "leaves/navigation", leaf: @leaf %>
+<% content_for :footer do %>
+  <%= render "leaves/navigation", leaf: @leaf %>
+<% end %>

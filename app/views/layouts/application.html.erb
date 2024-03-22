@@ -27,6 +27,16 @@
   </head>
 
   <body data-controller="fullscreen">
-    <%= yield %>
+    <header id="header">
+      <%= yield :header %>
+    </header>
+
+    <main id="main">
+      <%= yield %>
+    </main>
+
+    <footer id="footer">
+      <%= yield :footer %>
+    </footer>
   </body>
 </html>

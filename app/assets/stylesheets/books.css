@@ -63,3 +63,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+.book__nav {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

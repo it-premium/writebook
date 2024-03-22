@@ -1,6 +1,8 @@
-.btn {
+:root {
   --btn-size: 2.65em;
+}
 
+.btn {
   align-items: center;
   background-color: var(--btn-background, var(--color-text-reversed));
   border-radius: var(--btn-border-radius, 2em);
@@ -109,6 +111,8 @@
   --column-gap: var(--inline-space-half);
 
   border-radius: 2em;
+  display: flex;
   inline-size: fit-content;
+  margin: auto;
   padding: var(--inline-space-half) var(--inline-space);
 }

@@ -1,25 +1,17 @@
-<nav>
-  <%= link_to @book, class: "btn flex-item-justify-start" do %>
-    <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Go back</span>
-  <% end %>
+<% content_for :header do %>
+  <nav>
+    <%= link_to @book, class: "btn flex-item-justify-start" do %>
+      <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Cancel</span>
+    <% end %>
 
-  <div class="flex gap breadcrumbs align-end" style="--column-gap: 0.5ch;">
-    <%= link_to books_path do %>
-      <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-    <% end %> ▸
-    <%= link_to @book.title, @book %> ▸
-    <strong><%= @picture.title %></strong>
-  </div>
+    <button type="submit" form="page-editor", class="btn flex-item-justify-end">
+      <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Save</span>
+    </button>
+  </nav>
+<% end %>
 
-  <button type="submit" form="picture-editor", class="btn flex-item-justify-end">
-    <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Save</span>
-  </button>
-</nav>
-
-<main>
-  <div class="page">
-    <%= render "pictures/form", book: @book, picture: @picture %>
-  </div>
-</main>
+<div class="page">
+  <%= render "pictures/form", book: @book, picture: @picture %>
+</div>
