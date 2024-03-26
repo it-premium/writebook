@@ -1,0 +1,5 @@
+<div class="page">
+  <p>Changes in this version:</p>
+  <h2 class="diff"><%= format_diff_changes(@edit.generate_diff(:title)) %></h2>
+  <div class="diff"><%= format_diff_changes(@edit.generate_diff(:body)) %></div>
+</div>

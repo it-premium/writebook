@@ -3,9 +3,14 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :leaves
-    resources :pages
     resources :sections
     resources :pictures
+
+    resources :pages do
+      scope module: "pages" do
+        resources :edits, only: :show
+      end
+    end
   end
 
   direct :leafable do |leaf, options|

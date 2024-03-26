@@ -1,9 +1,6 @@
 <div class="edit">
-  <div><%= edit_action_name(edit) %> <%= time_ago_in_words(edit.created_at) %> ago –
-
-  <% if edit.current_version? %>
-    latest version
-  <% else %>
-    <%= link_to "compare", root_path %>
-  <% end %>
+  <div>
+    <%= link_to edit_action_name(edit), book_page_edit_path(edit.leaf.book, edit.leaf.leafable, edit) %>
+    <%= time_ago_in_words(edit.created_at) %> ago
+  </div>
 </div>

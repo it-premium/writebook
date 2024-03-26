@@ -1,0 +1,13 @@
+.diff {
+  white-space: break-spaces;
+  font-family: monospace;
+}
+
+del {
+  text-decoration: line-through;
+  color: red;
+}
+
+ins {
+  color: green;
+}
