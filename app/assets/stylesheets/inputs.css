@@ -1,10 +1,10 @@
 /* Text inputs */
 .input {
-  accent-color: var(--input-accent-color, var(--color-text));
+  accent-color: var(--input-accent-color, var(--color-ink));
   background-color: var(--input-background, transparent);
   border-radius: var(--input-border-radius, 0.5em);
   border: var(--input-border-size, 1px) solid var(--input-border-color, var(--color-border-darker));
-  color: var(--input-color, var(--color-text));
+  color: var(--input-color, var(--color-ink));
   font-size: max(16px, 1em);
   inline-size: 100%;
   padding: var(--input-padding, 0.5em 0.8em);
@@ -14,7 +14,7 @@
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--color-text);
+    -webkit-text-fill-color: var(--color-ink);
     -webkit-box-shadow: 0 0 0px 1000px var(--color-selected) inset;
   }
 
@@ -31,10 +31,10 @@
 /* Switches */
 .switch {
   block-size: 1.75em;
+  border-radius: 2em;
   display: inline-flex;
   inline-size: 3em;
   position: relative;
-  border-radius: 2em;
 
   @media (any-hover: hover) {
     &:where(:not(:active):hover) .switch__btn {
@@ -67,7 +67,7 @@
   transition: 150ms ease;
 
   &::before {
-    background-color: var(--color-text-reversed);
+    background-color: var(--color-ink-reversed);
     block-size: 1.35em;
     border-radius: 50%;
     content: "";
@@ -84,7 +84,7 @@
   }
 
   .switch__input:checked + & {
-    background-color: var(--color-text);
+    background-color: var(--color-ink);
 
     &::before {
       transform: translateX(1.2em);

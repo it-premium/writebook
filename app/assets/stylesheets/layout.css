@@ -2,9 +2,17 @@
   --footer-height: calc((var(--block-space) * 2) + var(--btn-size));
 
   container-type: inline-size;
-  margin: var(--block-space) 0 var(--footer-height) auto;
-  padding-inline: clamp(2ch, 6%, 6ch);
+  font-size: clamp(1rem, 2.5cqi, 1.5rem);
+  margin-block: var(--block-space) var(--footer-height);
+  margin-inline: auto;
+  max-inline-size: 100%;
+  padding-inline: var(--inline-space);
   text-align: start;
+
+  &.page {
+    inline-size: 60ch;
+    padding-inline: clamp(var(--inline-space), 5cqi, calc(var(--inline-space) * 3));
+  }
 }
 
 #header {

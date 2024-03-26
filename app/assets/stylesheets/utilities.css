@@ -3,7 +3,7 @@
   --inline-space-half: calc(var(--inline-space) / 2);
   --inline-space-double: calc(var(--inline-space) * 2);
 
-  --block-space: 1lh;
+  --block-space: 1rem;
   --block-space-half: calc(var(--block-space) / 2);
   --block-space-double: calc(var(--block-space) * 2);
 }
@@ -19,8 +19,8 @@
 .txt-align-start { text-align: start; }
 .txt-align-end { text-align: end; }
 
-.txt-primary { color: var(--color-text); }
-.txt-reversed { color: var(--color-text-reversed); }
+.txt-ink { color: var(--color-ink); }
+.txt-reversed { color: var(--color-ink-reversed); }
 .txt-negative { color: var(--color-negative); }
 .txt-subtle { color: var(--color-border-darker); }
 .txt-undecorated { text-decoration: none; }
@@ -132,8 +132,8 @@
 
 /* Fills */
 .fill { background-color: var(--color-bg); }
-.fill-black { background-color: var(--color-text); }
-.fill-white { background-color: var(--color-text-reversed); }
+.fill-black { background-color: var(--color-ink); }
+.fill-white { background-color: var(--color-ink-reversed); }
 .fill-shade { background-color: var(--color-border); }
 .fill-transparent { background-color: transparent; }
 

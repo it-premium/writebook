@@ -1,3 +1,6 @@
+<% content_for(:title) { "Edit #{ @page.title }" } %>
+<% @layout_class = "page" %>
+
 <% content_for :header do %>
   <nav>
     <%= link_to leafable_path(@leaf), class: "btn flex-item-justify-start" do %>
@@ -20,9 +23,9 @@
   </nav>
 <% end %>
 
-<div class="page">
+<article class="layout--reading">
   <%= render "pages/form", book: @book, page: @page %>
-</div>
+</article>
 
 <% content_for :footer do %>
   <nav>

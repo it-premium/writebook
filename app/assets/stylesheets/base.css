@@ -6,24 +6,13 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: none;
+  background: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   line-height: 1.4;
   overflow: initial;
   text-rendering: optimizeLegibility;
   text-size-adjust: none;
-}
-
-body {
-  color: var(--color-text);
-  background: var(--color-bg);
-  text-align: center;
-}
-
-.page {
-  font-size: clamp(1rem, 2.5cqi, 1.5rem);
-  margin: auto;
-  inline-size: 55ch;
-  max-inline-size: 100%;
 }
 
 a:not([class]) {
@@ -53,88 +42,8 @@ a:not([class]) {
   }
 }
 
-:is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
-  font-weight: 800;
-  hyphens: auto;
-  letter-spacing: -0.03ch;
-  line-height: calc(2px + 2ex + 2px);
-  margin-block: 0.65em;
-  overflow-wrap: break-word;
-  text-wrap: balance;
-}
-
-:is(p, ul, ol, dl, blockquote, pre, figure, table, hr) {
-  margin-block: 1lh;
-  overflow-wrap: break-word;
-  text-wrap: pretty;
-}
-
 ::selection {
   background-color: var(--color-selected);
-}
-
-hr {
-  border-color: var(--color-border-darker);
-  border-style: solid none none;
-  margin: 2lh auto;
-}
-
-strong {
-  font-weight: 600;
-}
-
-pre {
-  background-color: var(--color-border);
-  border: 1px solid var(--color-border-dark);
-  border-radius: 0.5em;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  padding: 0.5lh 2ch;
-}
-
-
-code {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.85em;
-}
-
-p {
-  hyphens: auto;
-  letter-spacing: -0.005ch;
-}
-
-blockquote {
-  font-style: italic;
-  margin: 0 3ch;
-
-  p {
-    hyphens: none;
-    text-align: left;
-
-    &:first-of-type::first-letter {
-      -webkit-initial-letter: normal;
-      initial-letter: normal;
-      margin: 0;
-    }
-  }
-}
-
-table {
-  border: 1px solid var(--color-border-darker);
-  border-collapse: collapse;
-  inline-size: 100%;
-  margin: 1lh auto;
-  table-layout: fixed;
-}
-
-thead td {
-  font-weight: 500;
-}
-
-td {
-  padding: 0.2lh 1ch;
-  border: 1px solid var(--color-border-darker);
 }
 
 .breadcrumbs {
@@ -149,59 +58,17 @@ td {
   }
 }
 
-.page-type-picker {
-  --border-color: var(--color-border-darker);
-  --border-radius: 1.5em;
-  --border-size: 1px;
-  --btn-size: 2.65em;
-  --column-gap: var(--border-radius);
+.skip-navigation {
+  --left-offset: -999em;
 
-  background-color: var(--color-bg);
-  border: 0;
-  box-shadow:
-      0 .2em 1.6em -0.8em oklch(var(--lch-always-black) / 0.6),
-      0 .4em 2.4em -1em oklch(var(--lch-always-black) / 0.7),
-      0 .4em .8em -1.2em oklch(var(--lch-always-black) / 0.8),
-      0 .8em 1.2em -1.6em oklch(var(--lch-always-black) / 0.9),
-      0 1.2em 1.6em -2em oklch(var(--lch-always-black) / 1);
-  color: var(--color-text-reversed);
-  border-radius: var(--border-radius);
-  inline-size: auto;
-  inset: auto auto -100% 50%;
-  opacity: 0;
-  overflow: visible;
-  padding: var(--border-radius) calc(var(--border-radius) * 1.25);
-  transform: translateX(-50%);
-  transform-origin: bottom center;
-  transition: display 0.5s allow-discrete, inset 0.5s allow-discrete, opacity 0.5s, overlay 0.5s allow-discrete;
+  inset-block-start: var(--block-space-half);
+  inset-inline-start: var(--left-offset);
+  position: absolute;
+  z-index: 2;
 
-  &::backdrop {
-    background-color: oklch(var(--lch-always-black));
-    opacity: 0;
-    transition: display 0.5s allow-discrete, opacity 0.5s, overlay 0.5s allow-discrete;
+  &:focus-visible {
+    --left-offset: var(--block-space-half);
   }
-
-  &[open] {
-    inset-block-end: var(--block-space);
-    opacity: 1;
-
-    &::backdrop {
-      opacity: 0.5;
-    }
-  }
-
-  @starting-style {
-    &[open] {
-      inset-block-end: -100%;
-      opacity: 0;
-    }
-
-    &[open]::backdrop {
-      opacity: 0;
-    }
-  }
-
-  img { max-inline-size: unset; }
 }
 
 /* Nicer scrollbars on Chrome 29+. This is intended for Windows machines, but */

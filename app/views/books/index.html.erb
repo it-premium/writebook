@@ -1,22 +1,24 @@
-<section class="books">
+<% content_for(:title) { "Books" } %>
+
+<div class="library">
   <% @books.each do |book| %>
-    <figure class="book">
-      <%= link_to book do %>
-        <%= image_tag "default-cover.svg", alt: "Book cover", class: "book-cover" %>
-        <h2>
+    <figure class="library__book margin-none">
+      <%= link_to book, class: "txt-undecorated txt-ink flex flex-column gap-half" do %>
+        <%= image_tag "default-cover.svg", alt: "Book cover", class: "book__cover" %>
+        <h2 class="margin-none flex flex-column">
           <strong><%= book.title %></strong>
-          <small class="translucent">Author</small>
+          <small class="translucent txt-normal">Author</small>
         </h2>
       <% end %>
     </figure>
   <% end %>
-</section>
+</div>
 
 <% content_for :footer do %>
-  <nav>
+  <div>
     <%= link_to new_book_path, class: "btn" do %>
       <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Create a new book</span>
     <% end %>
-  </nav>
+  </div>
 <% end %>

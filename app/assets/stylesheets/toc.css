@@ -69,7 +69,7 @@
 
 :is(.toc--grid, .toc--row) {
   li {
-    color: var(--color-text);
+    color: var(--color-ink);
     container-type: inline-size;
     display: flex;
     flex-direction: column;

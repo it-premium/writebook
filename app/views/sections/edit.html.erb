@@ -1,3 +1,6 @@
+<% content_for(:title) { "Edit #{ @section.title }" } %>
+<% @layout_class = "page" %>
+
 <% content_for :header do %>
   <nav>
     <%= link_to leafable_path(@leaf), class: "btn flex-item-justify-start" do %>

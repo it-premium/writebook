@@ -1,3 +1,6 @@
+<% content_for(:title) { "New page" } %>
+<% @layout_class = "page" %>
+
 <% content_for :header do %>
   <nav>
     <%= link_to @book, class: "btn flex-item-justify-start" do %>
@@ -12,6 +15,6 @@
   </nav>
 <% end %>
 
-<div class="page">
+<article class="layout--reading">
   <%= render "pages/form", book: @book, page: @page %>
-</div>
+</article>

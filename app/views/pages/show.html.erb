@@ -1,11 +1,12 @@
+<% content_for(:title) { @page.title } %>
+<% @layout_class = "page" %>
+
 <% content_for :header do %>
   <%= render "leaves/header", book: @book, leaf: @leaf %>
 <% end %>
 
-<div class="page">
-  <h1><%= @page.title %></h1>
-  <%= render_markdown @page.body %>
-</div>
+<h1><%= @page.title %></h1>
+<%= render_markdown @page.body %>
 
 <%= render "leaves/history", leaf: @leaf %>
 

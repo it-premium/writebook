@@ -17,8 +17,8 @@
   --color-negative: oklch(var(--lch-red));
   --color-positive: oklch(var(--lch-green));
   --color-bg: oklch(var(--lch-white));
-  --color-text: oklch(var(--lch-black));
-  --color-text-reversed: oklch(var(--lch-white));
+  --color-ink: oklch(var(--lch-black));
+  --color-ink-reversed: oklch(var(--lch-white));
   --color-link: oklch(var(--lch-blue));
   --color-border: oklch(var(--lch-gray));
   --color-border-dark: oklch(var(--lch-gray-dark));

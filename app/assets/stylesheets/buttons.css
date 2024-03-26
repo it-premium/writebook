@@ -4,10 +4,10 @@
 
 .btn {
   align-items: center;
-  background-color: var(--btn-background, var(--color-text-reversed));
+  background-color: var(--btn-background, var(--color-ink-reversed));
   border-radius: var(--btn-border-radius, 2em);
   border: var(--btn-border-size, 1px) solid var(--btn-border-color, var(--color-border-darker));
-  color: var(--btn-color, var(--color-text));
+  color: var(--btn-color, var(--color-ink));
   cursor: pointer;
   display: inline-flex;
   font-weight: 600;
@@ -49,16 +49,22 @@
     }
   }
 
-  /* Radios and checkboxes */
+  /* With radios and checkboxes */
   &:has(input[type=radio], input[type=checkbox]) {
     :is(input[type=radio], input[type=checkbox]) {
-      opacity: 0;
+      appearance: none;
+      block-size: calc(var(--btn-size) - var(--outline-size));
+      border-radius: var(--btn-border-radius);
+      display: flex;
+      inline-size: calc(var(--btn-size) - var(--outline-size));
+      margin: 0;
+      padding: 0;
     }
   }
 
   &:has(input:checked)  {
-    --btn-background: var(--color-text);
-    --btn-color: var(--color-text-reversed);
+    --btn-background: var(--color-ink);
+    --btn-color: var(--color-ink-reversed);
 
     img {
       filter: invert(100%);
@@ -88,11 +94,11 @@
 
 .btn--negative {
   --btn-background: var(--color-negative);
-  --btn-color: var(--color-text-reversed);
+  --btn-color: var(--color-ink-reversed);
 }
 
 .btn--reversed {
-  --btn-background: var(--color-text);
+  --btn-background: var(--color-ink);
   --btn-border-color: var(--color-bg);
   --btn-color: var(--color-bg);
 }
@@ -105,14 +111,4 @@
       filter: invert(0);
     }
   }
-}
-
-.button-bar {
-  --column-gap: var(--inline-space-half);
-
-  border-radius: 2em;
-  display: flex;
-  inline-size: fit-content;
-  margin: auto;
-  padding: var(--inline-space-half) var(--inline-space);
 }
