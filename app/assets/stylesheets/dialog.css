@@ -1,0 +1,46 @@
+.dialog {
+  --border-color: var(--color-border-darker);
+  --border-radius: 1.5em;
+  --border-size: 1px;
+  --column-gap: var(--border-radius);
+
+  background-color: var(--color-bg);
+  border: 0;
+  box-shadow:
+      0 .2em 1.6em -0.8em oklch(var(--lch-always-black) / 0.6),
+      0 .4em 2.4em -1em oklch(var(--lch-always-black) / 0.7),
+      0 .4em .8em -1.2em oklch(var(--lch-always-black) / 0.8),
+      0 .8em 1.2em -1.6em oklch(var(--lch-always-black) / 0.9),
+      0 1.2em 1.6em -2em oklch(var(--lch-always-black) / 1);
+  color: var(--color-ink-reversed);
+  border-radius: var(--border-radius);
+  inline-size: 50ch;
+  max-inline-size: 100%;
+  opacity: 0;
+  overflow: visible;
+  padding: var(--border-radius) calc(var(--border-radius) * 1.25);
+
+  &::backdrop {
+    background-color: oklch(var(--lch-always-black));
+    opacity: 0;
+    transition: display 0.5s allow-discrete, opacity 0.5s, overlay 0.5s allow-discrete;
+  }
+
+  &[open] {
+    opacity: 1;
+
+    &::backdrop {
+      opacity: 0.5;
+    }
+  }
+
+  @starting-style {
+    &[open] {
+      opacity: 0;
+    }
+
+    &[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}

@@ -24,11 +24,6 @@
       <%= image_tag "share.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Share</span>
     </button>
-
-    <%= link_to edit_book_path(@book), class: "btn" do %>
-      <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
-      <span class="for-screen-reader">Go back</span>
-    <% end %>
   </nav>
 <% end %>
 
@@ -55,8 +50,36 @@
     <small class="txt-normal txt-large translucent txt-tight-lines">by Author</small>
   </h1>
 
-  <div class="toc__view center flex-inline gap-half">
-    <label class="btn txt-medium">
+  <div class="flex gap-half">
+    <%= link_to edit_book_path(@book), class: "btn txt-medium", hidden: true do %>
+      <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Go back</span>
+    <% end %>
+
+    <div data-controller="popup">
+      <button class="btn txt-medium", data-action="popup#toggle">
+        <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Edit book details</span>
+      </button>
+
+      <dialog class="dialog" data-popup-target="popup">
+        <%= render "books/form", book: @book %>
+        <div class="flex align-center gap margin-block-start">
+          <button type="submit" form="book-editor", class="btn btn--positive txt-medium flex-item-justify-start">
+            <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Save</span>
+          </button>
+          <form method="dialog" class="flex-item-justify-end">
+            <button class="btn btn--negative txt-medium">
+              <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+              <span class="for-screen-reader">Cancel and close</span>
+            </button>
+          </form>
+        </div>
+      </dialog>
+    </div>
+
+    <label class="btn txt-medium flex-item-justify-end">
       <input type="radio" name="view" id="toc-list" value="list" checked="checked">
       <%= image_tag "view-list.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">List view</span>
@@ -100,13 +123,13 @@
 </div>
 
 <% content_for :footer do %>
-  <div data-controller="popup">
+  <div data-controller="popup dialog">
     <button class="btn btn--plain btn--reversed", data-action="popup#toggle">
       <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Add a new page</span>
     </button>
 
-    <dialog id="new-page-picker" class="page__picker" data-popup-target="popup" data-action="click->popup#close">
+    <dialog id="new-page-picker" class="dialog page__picker" data-popup-target="popup" data-action="click->popup#close">
       <div class="flex align-center justify-center gap">
         <%= link_to new_book_page_path(@book), class: "btn btn--plain txt-x-large" do %>
           <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
