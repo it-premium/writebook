@@ -4,7 +4,8 @@ export default class extends Controller {
   static targets = [ "item" ]
 
   #cursorPosition = 0
-  #selections = { 0: true }
+  #selection = [ 0, 0 ]
+  #moving = false
 
   connect() {
   }
@@ -21,23 +22,19 @@ export default class extends Controller {
   }
 
   moveCursorUp(event) {
-    const index = Math.max(0, this.#cursorPosition - 1)
-    this.#moveCursorTo(index, event.shiftKey)
+    this.#moveCursorEarlier(event.shiftKey)
   }
 
   moveCursorRight(event) {
-    const index = Math.min(this.itemTargets.length - 1, this.#cursorPosition + 1)
-    this.#moveCursorTo(index, event.shiftKey)
+    this.#moveCursorLater(event.shiftKey)
   }
 
   moveCursorDown(event) {
-    const index = Math.min(this.itemTargets.length - 1, this.#cursorPosition + 1)
-    this.#moveCursorTo(index, event.shiftKey)
+    this.#moveCursorLater(event.shiftKey)
   }
 
   moveCursorLeft(event) {
-    const index = Math.max(0, this.#cursorPosition - 1)
-    this.#moveCursorTo(index, event.shiftKey)
+    this.#moveCursorEarlier(event.shiftKey)
   }
 
   toggleMoveMode() {
@@ -45,19 +42,31 @@ export default class extends Controller {
 
   }
 
+  #moveCursorEarlier(keepSelection) {
+    const index = Math.max(0, this.#cursorPosition - 1)
+    this.#moveCursorTo(index, keepSelection)
+  }
+
+  #moveCursorLater(keepSelection) {
+    const index = Math.min(this.itemTargets.length - 1, this.#cursorPosition + 1)
+    this.#moveCursorTo(index, keepSelection)
+  }
+
   #moveCursorTo(index, keepSelection) {
-    if (!keepSelection) {
-      this.#selections = {}
-    }
     this.#cursorPosition = index
-    this.#selections[this.#cursorPosition] = true
+    if (keepSelection) {
+      this.#selection = [ Math.min(this.#selection[0], index), Math.max(this.#selection[1], index) ]
+    } else {
+      this.#selection = [ index, index ]
+    }
+
     this.#setSelectionState()
   }
 
   #setSelectionState() {
     for (const [index, item] of this.itemTargets.entries()) {
       item.classList.toggle("cursor", index === this.#cursorPosition)
-      item.classList.toggle("selected", this.#selections[index] === true)
+      item.classList.toggle("selected", this.#isSelected(index))
     }
   }
 
@@ -65,5 +74,9 @@ export default class extends Controller {
     for (const item of this.itemTargets) {
       item.classList.remove("cursor", "selected")
     }
+  }
+
+  #isSelected(index) {
+    return index >= this.#selection[0] && index <= this.#selection[1]
   }
 }
