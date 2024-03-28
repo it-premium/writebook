@@ -1,7 +1,24 @@
-.cursor {
-  /* border: solid 1px #f90; */
+.selected {
+  background-color: #f904;
 }
 
-.selected {
+.selected.cursor {
   background-color: #f906;
+}
+
+.move-mode {
+  animation: pulsing 1s infinite;
+}
+
+
+@keyframes pulsing {
+  from {
+    background-color: #0f91;
+  }
+  50% {
+    background-color: #0f92;
+  }
+  to {
+    background-color: #0f91;
+  }
 }

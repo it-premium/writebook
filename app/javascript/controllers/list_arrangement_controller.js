@@ -25,7 +25,7 @@ export default class extends Controller {
     this.#moveCursorTo(index, event.shiftKey)
   }
 
-  moveCursorRight() {
+  moveCursorRight(event) {
     const index = Math.min(this.itemTargets.length - 1, this.#cursorPosition + 1)
     this.#moveCursorTo(index, event.shiftKey)
   }
@@ -35,9 +35,14 @@ export default class extends Controller {
     this.#moveCursorTo(index, event.shiftKey)
   }
 
-  moveCursorLeft() {
+  moveCursorLeft(event) {
     const index = Math.max(0, this.#cursorPosition - 1)
     this.#moveCursorTo(index, event.shiftKey)
+  }
+
+  toggleMoveMode() {
+    this.element.classList.toggle("move-mode")
+
   }
 
   #moveCursorTo(index, keepSelection) {

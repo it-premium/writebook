@@ -11,6 +11,7 @@ module ListArrangementHelper
       "keydown.shift+right": "moveCursorRight",
       "keydown.shift+down": "moveCursorDown",
       "keydown.shift+left": "moveCursorLeft",
+      "keydown.space": "toggleMoveMode",
     }
 
     actions.map { |action, target| "#{action}->list-arrangement##{target}" }.join(" ")
