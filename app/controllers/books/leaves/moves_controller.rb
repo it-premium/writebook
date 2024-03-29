@@ -2,13 +2,12 @@ class Books::Leaves::MovesController < ApplicationController
   include BookScoped
 
   def create
-    leaves.each.with_index(starting_position) do |leaf, position|
-      leaf.move_to_position(position)
-    end
+    leaf, *followed_by = leaves
+    leaf.move_to_position(position, followed_by: followed_by)
   end
 
   private
-    def starting_position
+    def position
       params[:position].to_i
     end
 
