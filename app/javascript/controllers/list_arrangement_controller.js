@@ -1,17 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
+import { post } from "@rails/request.js"
 
 export default class extends Controller {
-  static targets = [ "item" ]
+  static targets = ["item"]
+  static values = { url: String }
 
   #cursorPosition = 0
-  #selection = [ 0, 0 ]
+  #selection = [0, 0]
   #moveStartOrder = undefined
-
-  connect() {
-  }
-
-  disconnect() {
-  }
 
   focus() {
     this.#setSelectionState()
@@ -54,7 +50,11 @@ export default class extends Controller {
   }
 
   toggleMoveMode() {
-    this.#moveStartOrder = this.#moving ? undefined : [ ...this.itemTargets ]
+    if (this.#moving) {
+      this.#submitMove()
+    }
+
+    this.#moveStartOrder = this.#moving ? undefined : [...this.itemTargets]
     this.element.classList.toggle("move-mode", this.#moving)
   }
 
@@ -72,16 +72,22 @@ export default class extends Controller {
   }
 
   #moveCursorLater(keepSelection) {
-    const index = Math.min(this.itemTargets.length - 1, this.#cursorPosition + 1)
+    const index = Math.min(
+      this.itemTargets.length - 1,
+      this.#cursorPosition + 1
+    )
     this.#moveCursorTo(index, keepSelection)
   }
 
   #moveCursorTo(index, keepSelection) {
     this.#cursorPosition = index
     if (keepSelection) {
-      this.#selection = [ Math.min(this.#selection[0], index), Math.max(this.#selection[1], index) ]
+      this.#selection = [
+        Math.min(this.#selection[0], index),
+        Math.max(this.#selection[1], index),
+      ]
     } else {
-      this.#selection = [ index, index ]
+      this.#selection = [index, index]
     }
 
     this.#setSelectionState()
@@ -92,7 +98,7 @@ export default class extends Controller {
       const itemToMove = this.itemTargets[this.#selection[0] - 1]
       this.itemTargets[this.#selection[1]].after(itemToMove)
 
-      this.#selection = [ this.#selection[0] - 1, this.#selection[1] - 1 ]
+      this.#selection = [this.#selection[0] - 1, this.#selection[1] - 1]
       this.#cursorPosition--
       this.#setSelectionState()
     }
@@ -103,7 +109,7 @@ export default class extends Controller {
       const itemToMove = this.itemTargets[this.#selection[1] + 1]
       this.itemTargets[this.#selection[0]].before(itemToMove)
 
-      this.#selection = [ this.#selection[0] + 1, this.#selection[1] + 1 ]
+      this.#selection = [this.#selection[0] + 1, this.#selection[1] + 1]
       this.#cursorPosition++
       this.#setSelectionState()
     }
@@ -131,6 +137,19 @@ export default class extends Controller {
 
   #isSelected(index) {
     return index >= this.#selection[0] && index <= this.#selection[1]
+  }
+
+  #submitMove() {
+    const position = this.#selection[0]
+    const ids = this.itemTargets
+      .slice(this.#selection[0], this.#selection[1] + 1)
+      .map((item) => item.dataset.id)
+
+    const body = new FormData()
+    body.append("position", position)
+    ids.forEach(id => body.append("id[]", id))
+
+    post(this.urlValue, { body })
   }
 
   get #moving() {
