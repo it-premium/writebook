@@ -5,9 +5,13 @@ export default class extends Controller {
   static targets = ["item"]
   static values = { url: String }
 
-  #cursorPosition = 0
-  #selection = [0, 0]
-  #moveStartOrder = undefined
+  #cursorPosition
+  #selection
+  #moveStartOrder
+
+  connect() {
+    this.#reset()
+  }
 
   focus() {
     this.#setSelectionState()
@@ -116,9 +120,9 @@ export default class extends Controller {
   }
 
   #restorePreviousOrder() {
-    for (const el of this.#moveStartOrder) {
-    }
-    console.log("Order was", this.#moveStartOrder)
+    this.element.append(...this.#moveStartOrder)
+    this.#reset()
+    this.#setSelectionState()
   }
 
   #setSelectionState() {
@@ -150,6 +154,12 @@ export default class extends Controller {
     ids.forEach(id => body.append("id[]", id))
 
     post(this.urlValue, { body })
+  }
+
+  #reset() {
+    this.#cursorPosition = 0
+    this.#selection = [0, 0]
+    this.#moveStartOrder = undefined
   }
 
   get #moving() {
