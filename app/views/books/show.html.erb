@@ -125,7 +125,7 @@
     </label>
   </div>
 
-  <ol class="toc" tabindex="0" data-controller="list-arrangement" data-action="<%= list_arrangement_actions %>" data-list-arrangement-url-value="<%= book_leaves_moves_url(@book) %>">
+  <%= book_toc_tag do %>
     <% @leaves.each do |leaf| %>
       <li class="toc__leaf toc__leaf--<%= leaf.leafable_name%>" draggable="true" data-list-arrangement-target="item" data-id="<%= leaf.id %>">
         <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "toc__handle", data: { list_arrangement_target: "handle" } %>
@@ -152,7 +152,7 @@
         </button>
       </li>
     <% end %>
-  </ol>
+  <% end %>
 </div>
 
 <% content_for :footer do %>

@@ -1,4 +1,16 @@
 module BooksHelper
+  def book_toc_tag(&)
+    tag.ol class: "toc", tabindex: 0,
+      data: {
+        controller: "list-arrangement",
+        action: list_arrangement_actions,
+        list_arrangement_url_value: book_leaves_moves_url(@book),
+        list_arrangement_cursor_class: "cursor",
+        list_arrangement_selected_class: "selected",
+        list_arrangement_moving_class: "move-mode"
+      }, &
+  end
+
   def link_to_previous_leafable(leaf)
     if previous_leaf = leaf.previous
       link_to leafable_path(previous_leaf), data: { **hotkey_data_attributes("left") }, class: "txt-ink txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-start flex-item-justify-start" do

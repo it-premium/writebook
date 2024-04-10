@@ -9,6 +9,7 @@ const Direction = {
 export default class extends Controller {
   static targets = ["item", "handle"]
   static values = { url: String }
+  static classes = [ "cursor", "moving", "selected" ]
 
   #cursorPosition
   #selection
@@ -58,16 +59,17 @@ export default class extends Controller {
     }
 
     this.#moveStartOrder = this.#moving ? undefined : [...this.itemTargets]
-    this.element.classList.toggle("move-mode", this.#moving)
+    this.element.classList.toggle(this.movingClass, this.#moving)
   }
 
   cancelMoveMode() {
     if (this.#moving) {
       this.#restorePreviousOrder()
       this.#moveStartOrder = undefined
-      this.element.classList.toggle("move-mode", false)
+      this.element.classList.toggle(this.movingClass, false)
     }
   }
+
 
   // Private
 
@@ -137,16 +139,16 @@ export default class extends Controller {
 
   #setSelectionState() {
     for (const [index, item] of this.itemTargets.entries()) {
-      item.classList.toggle("cursor", index === this.#cursorPosition)
-      item.classList.toggle("selected", this.#isSelected(index))
+      item.classList.toggle(this.cursorClass, index === this.#cursorPosition)
+      item.classList.toggle(this.selectedClass, this.#isSelected(index))
     }
   }
 
   #clearSelectionState() {
     for (const item of this.itemTargets) {
-      item.classList.remove("cursor", "selected")
+      item.classList.remove(this.cursorClass, this.selectedClass)
     }
-    this.element.classList.remove("move-mode")
+    this.element.classList.remove(this.movingClass)
   }
 
   #isSelected(index) {
