@@ -11,10 +11,6 @@
     <div class="breadcrumbs ">
       <%= form_with model: [ @book, @page ], class: "flex align-center gap-half" do |form| %>
         <%= form.text_field :title, class: "input full-width" %>
-        <%= tag.button type: "submit", class: "btn txt-small" do %>
-          <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
-          <span class="for-screen-reader">Save</span>
-        <% end %>
       <% end %>
     </div>
 
