@@ -19,18 +19,23 @@ export default class extends Controller {
   #originalOrder
   #selection
   #moveMode = false
+  #arrangeMode = false
 
 
   // Actions - selection state
 
   click(event) {
+    if (!this.#arrangeMode) { return }
+
     const target = event.target.closest(ITEM_SELECTOR)
     this.#setSelection(target, event.shiftKey)
   }
 
   setArrangeMode(event) {
+    this.#arrangeMode = event.target.checked
+
     for (const item of this.itemTargets) {
-      item.setAttribute("draggable", event.target.checked)
+      item.setAttribute("draggable", this.#arrangeMode)
     }
     this.#resetSelection()
   }
@@ -39,6 +44,8 @@ export default class extends Controller {
   // Actions - keyboard
 
   moveBefore(event) {
+    if (!this.#arrangeMode) { return }
+
     if (this.#moveMode) {
       this.#moveSelection(Direction.BEFORE)
     } else {
@@ -48,6 +55,8 @@ export default class extends Controller {
   }
 
   moveAfter(event) {
+    if (!this.#arrangeMode) { return }
+
     if (this.#moveMode) {
       this.#moveSelection(Direction.AFTER)
     } else {
@@ -57,6 +66,8 @@ export default class extends Controller {
   }
 
   toggleMoveMode() {
+    if (!this.#arrangeMode) { return }
+
     if (this.#moveMode) {
       this.applyMoveMode()
     } else {
@@ -68,6 +79,8 @@ export default class extends Controller {
   }
 
   applyMoveMode() {
+    if (!this.#arrangeMode) { return }
+
     this.#moveMode = false
     this.#originalOrder = undefined
     this.#renderSelection()
@@ -75,6 +88,8 @@ export default class extends Controller {
   }
 
   cancelMoveMode() {
+    if (!this.#arrangeMode) { return }
+
     if (this.#moveMode) {
       this.containerTarget.append(...this.#originalOrder)
       this.#moveMode = false
