@@ -6,6 +6,8 @@
   --block-space: 1rem;
   --block-space-half: calc(var(--block-space) / 2);
   --block-space-double: calc(var(--block-space) * 2);
+
+  --font-medium-container: clamp(1rem, 2.5cqi, 1.5rem);
 }
 
 /* Text */
@@ -14,6 +16,7 @@
 .txt-large { font-size: 1.4rem; }
 .txt-x-large { font-size: 1.8rem; }
 .txt-xx-large { font-size: 2.4rem; }
+.txt-medium-container { font-size: var(--font-medium-container); }
 
 .txt-align-center { text-align: center; }
 .txt-align-start { text-align: start; }

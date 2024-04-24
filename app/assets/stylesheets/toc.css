@@ -2,7 +2,6 @@
   --hover-size: 0;
 
   display: grid;
-  font-size: clamp(1rem, 2.5cqi, 1.4rem);
   inline-size: auto;
   gap: var(--block-space) var(--inline-space);
   grid-template-columns: repeat(auto-fit, minmax(max(130px, 12cqi), 1fr));
@@ -32,7 +31,6 @@
     column-gap: 1ch;
     display: flex;
     flex-direction: row;
-    font-weight: 300;
     justify-content: center;
     row-gap: calc(var(--block-space) * 0.3);
     text-align: start;

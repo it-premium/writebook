@@ -32,10 +32,6 @@
 }
 
 .book__title {
-  font-size: clamp(2rem, 4cqi, 2.4rem);
+  font-size: clamp(2rem, 6cqi, 3rem);
   font-weight: 750;
-}
-
-:is(.book__subtitle, .book__author) {
-  font-size: clamp(1rem, 2.5cqi, 1.4rem);
 }

@@ -19,7 +19,10 @@ html, body {
 }
 
 a:not([class]) {
+  --hover-size: 0;
+
   color: var(--color-link);
+  text-decoration: underline;
   text-decoration-skip-ink: auto;
 }
 
