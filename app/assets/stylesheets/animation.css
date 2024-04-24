@@ -4,7 +4,7 @@
 }
 
 .wiggle {
-  animation: fade-in 400ms both, wiggle 400ms both;
+  animation: wiggle 400ms both;
 }
 
 /* Keyframes */
@@ -37,6 +37,15 @@
   40%  { transform: rotate(-3deg); }
   60%  { transform: rotate(3deg); }
   80%  { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes fidget {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(0.7deg); }
+  40%  { transform: rotate(-0.7deg); }
+  60%  { transform: rotate(0.7deg); }
+  80%  { transform: rotate(-0.7deg); }
   100% { transform: rotate(0deg); }
 }
 

@@ -129,7 +129,6 @@
   aspect-ratio: 1;
   block-size: 0.8em;
   cursor: grab;
-  display: none;
   margin: auto;
   opacity: 0.3;
 }

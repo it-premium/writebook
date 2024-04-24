@@ -14,8 +14,18 @@
 }
 
 .toc__container:where(:has(#arrange-mode:checked)) {
-  .toc__leaf * {
-    pointer-events: none;
+  &:not(:has(#toc-list:checked)) .toc__leaf {
+    animation: fidget 500ms infinite;
+  }
+
+  .toc__leaf {
+
+    cursor: move;
+
+     * {
+      pointer-events: none !important;
+      text-decoration: none !important;
+    }
   }
 
   .page__picker {
@@ -29,21 +39,24 @@
   }
 
   &.arrangement-selected {
-    border-color: red;
+    background-color: var(--color-selected);
+    border-radius: 0.2em;
   }
 }
 
 .arrangement-move-mode {
   .toc__leaf {
     &.arrangement-selected {
-      animation: arrangement-pulsing 600ms infinite;
+      animation: arrangement-pulsing 1000ms infinite;
     }
   }
 }
 
 .arrangement-placeholder {
-  background-color: #0001;
-  border-radius: 12px;
+  background-color: oklch(var(--lch-gray) / 0.5);
+  border-color: var(--color-border);
+  border-style: solid;
+  border-radius: 0.2em;
 }
 
 .arrangement-drag-image {
@@ -52,7 +65,7 @@
   right: 100%;
   padding: 0 1rem;
   line-height: 2rem;
-  background-color: red;
+  background-color: var(--color-link);
   color: white;
   border-radius: 1rem;
   text-wrap: nowrap;
