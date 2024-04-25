@@ -13,5 +13,10 @@
       <span class="for-screen-reader">Copy join link</span>
       <%= image_tag "copy-paste.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
     <% end %>
+
+    <%= web_share_session_button(url, "Link to join Workbook", "Hit this link to join me in Workbook and start writing.") do %>
+      <span class="for-screen-reader">Share join link</span>
+      <%= image_tag "share.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
+    <% end %>
   </div>
 </div>
