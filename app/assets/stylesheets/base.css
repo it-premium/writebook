@@ -95,6 +95,11 @@ a:not([class]) {
   padding: calc(var(--block-space) * 2);
 }
 
+.qr-code {
+  aspect-ratio: 1;
+  block-size: 50dvh;
+}
+
 /* Turbo */
 turbo-frame {
   display: contents;

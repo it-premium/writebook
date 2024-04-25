@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :qr_code, only: :show
   resources :users
 
   direct :leafable do |leaf, options|

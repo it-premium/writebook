@@ -6,12 +6,17 @@ module InvitationsHelper
     }, &
   end
 
-  def web_share_session_button(url, title, text, &)
+  def button_to_share_session(url, title, text, &)
     tag.button class: "btn", hidden: true, data: {
       controller: "web-share", action: "web-share#share",
       web_share_url_value: url,
       web_share_text_value: text,
       web_share_title_value: title
     }, &
+  end
+
+  def qr_code_image(url)
+    id = Base64.urlsafe_encode64(url)
+    image_tag qr_code_path(id), class: "qr-code center", alt: "QR Code"
   end
 end

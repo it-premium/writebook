@@ -9,14 +9,32 @@
   </label>
 
   <div class="flex align-center gap">
+    <div data-controller="popup" class="flex-inline">
+      <%= tag.button class: "btn", data: { action: "popup#toggle" } do %>
+        <%= image_tag "qr-code.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
+        <span class="for-screen-reader">Show join link QR code</span>
+      <% end %>
+
+      <dialog class="dialog panel" data-popup-target="popup" data-action="click->popup#close" style="--panel-size: max-content">
+        <%= qr_code_image(url) %>
+
+        <div class="margin-block-start flex justify-center">
+          <%= tag.button class: "btn", data: { action: "popup#close" } do %>
+            <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Close</span>
+          <% end %>
+        </div>
+      </dialog>
+    </div>
+
     <%= button_to_copy_to_clipboard(url) do %>
-      <span class="for-screen-reader">Copy join link</span>
       <%= image_tag "copy-paste.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
+      <span class="for-screen-reader">Copy join link</span>
     <% end %>
 
-    <%= web_share_session_button(url, "Link to join Workbook", "Hit this link to join me in Workbook and start writing.") do %>
-      <span class="for-screen-reader">Share join link</span>
+    <%= button_to_share_session(url, "Link to join Workbook", "Hit this link to join me in Workbook and start writing.") do %>
       <%= image_tag "share.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
+      <span class="for-screen-reader">Share join link</span>
     <% end %>
   </div>
 </div>

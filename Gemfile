@@ -23,6 +23,7 @@ gem "redcarpet", "~> 3.6"
 gem "bcrypt", "~> 3.1.7"
 gem "image_processing", "~> 1.2"
 gem "diff-lcs"
+gem "rqrcode"
 
 group :development, :test do
   gem "debug"
