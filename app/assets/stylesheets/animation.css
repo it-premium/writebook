@@ -16,6 +16,22 @@
   to { opacity: 0; }
 }
 
+@keyframes fidget {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(0.7deg); }
+  40%  { transform: rotate(-0.7deg); }
+  60%  { transform: rotate(0.7deg); }
+  80%  { transform: rotate(-0.7deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes shake {
+  0%  { transform: translateX(-2rem); }
+  25% { transform: translateX(2rem); }
+  50% { transform: translateX(-1rem); }
+  75% { transform: translateX(1rem); }
+}
+
 @keyframes slide-from-right {
   from { transform: translateX(3rem); }
 }
@@ -24,11 +40,9 @@
   to { transform: translateX(-3rem); }
 }
 
-@keyframes shake {
-  0%  { transform: translateX(-2rem); }
-  25% { transform: translateX(2rem); }
-  50% { transform: translateX(-1rem); }
-  75% { transform: translateX(1rem); }
+@keyframes success {
+  0%  { background-color: var(--color-border-darker); scale: 0.8; }
+  20% { background-color: var(--color-border-darker); scale: 1; }
 }
 
 @keyframes wiggle {
@@ -40,13 +54,8 @@
   100% { transform: rotate(0deg); }
 }
 
-@keyframes fidget {
-  0%   { transform: rotate(0deg); }
-  20%  { transform: rotate(0.7deg); }
-  40%  { transform: rotate(-0.7deg); }
-  60%  { transform: rotate(0.7deg); }
-  80%  { transform: rotate(-0.7deg); }
-  100% { transform: rotate(0deg); }
+@keyframes zoom-fade {
+  100% { transform: translateY(-2em); opacity: 0; }
 }
 
 /* View Transitions */
