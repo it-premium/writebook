@@ -39,26 +39,10 @@
       <%= image_tag "text-italic.svg", aria: { hidden: "true" }, size: "16" %>
       <span class="for-screen-reader">Text style: italic</span>
     <% end %>
-    <button type="button">
-      <%= image_tag "text-quote.svg", aria: { hidden: "true" }, size: "18" %>
-      <span class="for-screen-reader">Text style: quote</span>
-    </button>
-    <button type="button">
-      <%= image_tag "text-code.svg", aria: { hidden: "true" }, size: "18" %>
-      <span class="for-screen-reader">Text style: code</span>
-    </button>
-    <button type="button">
-      <%= image_tag "text-bullets.svg", aria: { hidden: "true" }, size: "18" %>
-      <span class="for-screen-reader">Text style: bulleted list</span>
-    </button>
-    <button type="button">
-      <%= image_tag "text-numbers.svg", aria: { hidden: "true" }, size: "18" %>
-      <span class="for-screen-reader">Text style: numbered list</span>
-    </button>
-    <button type="button">
-      <%= image_tag "text-image.svg", aria: { hidden: "true" }, size: "18" %>
-      <span class="for-screen-reader">Text add image</span>
-    </button>
+    <%= house_button "strikethrough" do %>
+      <%= image_tag "text-strike.svg", aria: { hidden: "true" }, size: "16" %>
+      <span class="for-screen-reader">Text style: strikethrough</span>
+    <% end %>
     <span class="flex-item-justify-end">
       <%= render "leaves/delete", leaf: @leaf %>
     </span>
