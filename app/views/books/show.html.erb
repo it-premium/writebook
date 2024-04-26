@@ -25,22 +25,6 @@
 <aside class="txt-align-center">
   <%= image_tag @book.cover.attached? ? @book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover margin-none" %>
 
-  <fieldset class="flex flex-column gap margin-block pad border-radius border no-print">
-    <legend class="center">
-      <%= image_tag "download.svg", aria: { hidden: true }, size: 36, class: "colorize--black translucent" %>
-      <span class="for-screen-reader">Downloads</span>
-    </legend>
-
-    <% ["pdf", "mobi", "html", "epub"].each do |format| %>
-      <%= link_to nil, class: "txt-ink" do %>
-        <div class="flex align-center gap txt-medium">
-          <%= image_tag "file-#{format}.svg", aria: { hidden: true }, size: 36, class: "colorize--black" %>
-          <u><%= "#{ @book.title.parameterize }.#{format}" %></u>
-        </div>
-      <% end %>
-    <% end %>
-  </fieldset>
-
   <div hidden class="flex-inline align-center gap center margin-block-start pad-inline pad-block-half fill-shade border-radius">
     <%= image_tag "lock.svg", aria: { hidden: true }, size: 36, class: "colorize--black" %>
 
