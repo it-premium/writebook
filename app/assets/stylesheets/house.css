@@ -4,26 +4,6 @@ house-md {
   flex-grow: 1;
 }
 
-.house-md-content {
-  caret-color: var(--color-link);
-  flex-grow: 1;
-  font-family: var(--font-sans);
-  hyphens: none;
-  min-block-size: 20lh;
-  text-align: left;
-  text-justify: unset;
-  white-space: break-spaces;
-
-  &:active, &:focus{
-    border:none;
-    outline:none;
-  }
-
-  p {
-    hyphens: none;
-  }
-}
-
 house-md-toolbar {
   button {
     align-items: center;
@@ -48,5 +28,25 @@ house-md-toolbar {
     &:is(:active) {
       background-color: var(--color-selected-dark);
     }
+  }
+}
+
+.house-md-content {
+  caret-color: var(--color-link);
+  flex-grow: 1;
+  font-family: var(--font-sans);
+  hyphens: none;
+  min-block-size: 20lh;
+  text-align: left;
+  text-justify: unset;
+  white-space: break-spaces;
+
+  &:active, &:focus{
+    border:none;
+    outline:none;
+  }
+
+  p {
+    hyphens: none;
   }
 }
