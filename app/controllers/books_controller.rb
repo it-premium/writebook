@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show edit update ]
+  before_action :set_book, only: %i[ show edit update destroy ]
 
   def index
     @books = Book.ordered
@@ -24,6 +24,12 @@ class BooksController < ApplicationController
   def update
     @book.update(book_params)
     redirect_to @book
+  end
+
+  def destroy
+    @book.destroy
+
+    redirect_to root_url
   end
 
   private

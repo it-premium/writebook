@@ -70,6 +70,15 @@
               <span class="for-screen-reader">Save</span>
             </button>
           </div>
+
+          <div class="flex flex-column justify-center txt-align-center">
+            <hr class="full-width">
+            <%= button_to book_path(@book), method: :delete, class: "btn btn--negative center txt-small",
+                  data: { turbo_confirm: "Are you sure you want to delete this book? It cannot be undone." } do %>
+              <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
+              <%= @book.title %>
+            <% end %>
+          </div>
         </dialog>
       </div>
     </strong>
