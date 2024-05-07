@@ -12,6 +12,7 @@ class User < ApplicationRecord
   end
 
   scope :active, -> { where(active: true) }
+  scope :ordered, -> { order(:name) }
 
   def deactivate
     transaction do

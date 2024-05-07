@@ -18,7 +18,7 @@
 <%= render "books/form", book: @book %>
 
 <div class="border-radius center pad fill-shade flex flex-column gap margin-block-double">
-  <%= render partial: "books/accesses/access", collection: @accesses, as: :user %>
+  <%= render partial: "books/accesses/access", collection: @accesses, as: :user, locals: { book: @book } %>
 </div>
 
 <div class="flex flex-column justify-center txt-align-center margin-block-double">

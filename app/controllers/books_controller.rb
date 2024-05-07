@@ -43,6 +43,6 @@ class BooksController < ApplicationController
     end
 
     def set_accesses
-      @accesses = User.active
+      @accesses = User.active.ordered
     end
 end
