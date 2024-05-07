@@ -1,18 +1,10 @@
-<div class="flex align-center gap-half pad-inline">
-  <span class="overflow-ellipsis"><%= user.name %></span>
-  <hr class="flex-item-grow margin-none">
+<%= turbo_frame_tag user, :access do %>
+  <div class="flex align-center gap-half pad-inline">
+    <span class="overflow-ellipsis"><%= user.name %></span>
+    <hr class="flex-item-grow margin-none">
 
-  <% if Current.user.can_administer? && user != Current.user %>
-    <label class="btn txt-small flex-item-no-shrink">
-      <input type="checkbox">
-      <%= image_tag "write.svg", size: 24, aria: { hidden: "true" } %>
-      <span class="for-screen-reader">Role: Writer</span>
-    </label>
-
-    <label class="btn txt-small flex-item-no-shrink">
-      <input type="checkbox" checked="checked">
-      <%= image_tag "eye.svg", size: 24, aria: { hidden: "true" } %>
-      <span class="for-screen-reader">Role: Reader</span>
-    </label>
-  <% end %>
-</div>
+    <% if Current.user.can_administer? && user != Current.user %>
+      <%= render "books/accesses/#{book.access_level_for(user: user)}", user: user, book: book %>
+    <% end %>
+  </div>
+<% end %>
