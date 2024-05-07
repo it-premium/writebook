@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_accesses, only: %i[ new edit ]
 
   def index
     @books = Book.ordered
@@ -39,5 +40,9 @@ class BooksController < ApplicationController
 
     def book_params
       params.require(:book).permit(:title, :subtitle, :author, :cover)
+    end
+
+    def set_accesses
+      @accesses = User.active
     end
 end
