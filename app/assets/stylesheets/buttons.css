@@ -17,17 +17,20 @@
   pointer-events: auto;
 
   /* Default icon styles */
-  &:where(:has(img)) {
+  &:where(:has(img, svg)) {
     text-align: start;
 
-    img {
+    img, svg {
       -webkit-touch-callout: none;
       aspect-ratio: 1;
       block-size: calc(var(--btn-size) / 1.9);
-      filter: invert(0);
       inline-size: calc(var(--btn-size) / 1.9);
       max-inline-size: unset;
       user-select: none;
+    }
+
+    img {
+      filter: invert(0);
 
       @media (prefers-color-scheme: dark) {
         filter: invert(100%);
@@ -36,7 +39,7 @@
   }
 
   /* Circle buttons */
-  &:where(:has(.for-screen-reader):has(img)) {
+  &:where(:has(.for-screen-reader):has(img, svg)) {
     --btn-border-radius: 50%;
     --btn-padding: 0;
 
@@ -98,7 +101,7 @@
   --btn-padding: 0;
   --hover-size: 0;
 
-  img{
+  img, svg {
     block-size: 100%;
     inline-size: 100%;
   }
