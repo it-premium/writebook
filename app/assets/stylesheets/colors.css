@@ -32,8 +32,8 @@
   @media (prefers-color-scheme: dark) {
     --lch-black: 100% 0 0;
     --lch-white: 0% 0 0;
-    --lch-gray: 25.2% 0 0;
-    --lch-gray-dark: 30.12% 0 0;
+    --lch-gray-light: 25.2% 0 0;
+    --lch-gray: 30.12% 0 0;
     --lch-gray-dark: 44.95% 0 0;
     --lch-blue: 72.25% 0.16 248;
     --lch-blue-light: 28.11% 0.053 248;
