@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
-  has_many :leaves, dependent: :destroy
+  include Accesses
 
+  has_many :leaves, dependent: :destroy
   has_one_attached :cover
 
   scope :ordered, -> { order(:title) }
