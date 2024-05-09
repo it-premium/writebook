@@ -41,5 +41,5 @@
   outline: var(--block-space) solid var(--color-bg);
   padding: var(--hover-size);
   position: sticky;
-  z-index: 1; ;
+  z-index: 1;
 }
