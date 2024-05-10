@@ -60,18 +60,6 @@
   }
 }
 
-@keyframes slide-up {
-  to {
-    translate: 0% -100%;
-  }
-}
-
-@keyframes slide-down {
-  from {
-    translate: 0% 100%;
-  }
-}
-
 #footer {
   /* animation: slide-down linear both; */
   /* animation-timeline: scroll(); */

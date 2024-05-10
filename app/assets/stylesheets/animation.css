@@ -46,6 +46,14 @@
   to { transform: translateX(-3rem); }
 }
 
+@keyframes slide-up {
+  to { translate: 0% -100%; }
+}
+
+@keyframes slide-down {
+  from { translate: 0% 100%; }
+}
+
 @keyframes success {
   0%  { background-color: var(--color-border-darker); scale: 0.8; }
   20% { background-color: var(--color-border-darker); scale: 1; }
