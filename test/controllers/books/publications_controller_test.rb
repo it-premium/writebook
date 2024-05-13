@@ -2,19 +2,29 @@ require "test_helper"
 
 class Books::PublicationsTest < ActionDispatch::IntegrationTest
   setup do
+    @book = books(:manual)
+
     sign_in :kevin
   end
 
-  test "edit book slug" do
-    book = books(:manual)
-    book.publish
+  test "publish a book" do
+    assert_changes -> { @book.reload.published? }, from: false, to: true do
+      patch book_publication_url(@book), params: { book: { published: "1" } }
+    end
 
-    get edit_book_publication_url(book)
+    assert_redirected_to book_publication_url(@book)
+    assert_equal "manual", @book.slug
+  end
+
+  test "edit book slug" do
+    @book.publish
+
+    get edit_book_publication_url(@book)
     assert_response :success
 
-    patch book_publication_url(book), params: { book: { slug: "new-slug" } }
-    assert_redirected_to book_publication_url(book)
+    patch book_publication_url(@book), params: { book: { slug: "new-slug" } }
+    assert_redirected_to book_publication_url(@book)
 
-    assert_equal "new-slug", book.reload.slug
+    assert_equal "new-slug", @book.reload.slug
   end
 end
