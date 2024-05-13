@@ -9,8 +9,12 @@
         <label class="flex flex-column gap full-width txt-align-center">
           <strong id="public_link_label" class="invite-label for-screen-reader">Public link to this book</strong>
           <span class="flex align-center gap margin-inline">
-            <%= request.host %>/<%= form.text_field :slug, class: "input fill-white", autofocus: true,
-                  pattern: "^[\\-A-Za-z0-9]+$", title: "Enter letters, numbers, or hyphens only" %>
+            <%= request.host %>/
+            <%= form.text_field :slug,
+                  autofocus: true,
+                  class: class_names("input fill-white", "shake" => @book.errors[:slug].any?),
+                  pattern: "^[\\-A-Za-z0-9]+$",
+                  title: "Enter letters, numbers, or hyphens only" %>
           </span>
         </label>
 

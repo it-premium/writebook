@@ -3,6 +3,7 @@ module Book::Sluggable
 
   included do
     after_save :generate_slug, if: -> { slug.blank? && just_published? }
+    validates :slug, uniqueness: true, if: -> { slug.present? }
   end
 
   def generate_slug
