@@ -75,9 +75,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_05_13_110858) do
     t.datetime "updated_at", null: false
     t.string "subtitle"
     t.string "author"
-    t.datetime "published_at"
+    t.boolean "published", default: false, null: false
     t.string "slug"
-    t.index ["published_at"], name: "index_books_on_published_at"
+    t.index ["published"], name: "index_books_on_published"
     t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 

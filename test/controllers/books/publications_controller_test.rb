@@ -17,7 +17,7 @@ class Books::PublicationsTest < ActionDispatch::IntegrationTest
   end
 
   test "edit book slug" do
-    @book.publish
+    @book.update! published: true
 
     get edit_book_publication_url(@book)
     assert_response :success
