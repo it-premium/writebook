@@ -10,6 +10,7 @@
   color: var(--btn-color, var(--color-ink));
   cursor: pointer;
   display: inline-flex;
+  font-size: 1em;
   font-weight: 600;
   gap: 0.5em;
   justify-content: center;
@@ -100,6 +101,7 @@
 
 /* Variants */
 .btn--plain {
+  --btn-border-radius: 0.5em;
   --btn-border-size: 0;
   --btn-padding: 0;
   --hover-size: 0;
@@ -135,6 +137,10 @@
       filter: invert(0);
     }
   }
+}
+
+.btn--small {
+  font-size: 0.8em;
 }
 
 .btn--success {
