@@ -1,6 +1,10 @@
 <%= turbo_frame_tag dom_id(@book, :bookmark) do %>
   <% if @leaf %>
-    <%= tag.button class: "bookmark", style: "--progress: #{ @leaf.position_as_percentage }%" do %>
+    <%= link_to leafable_path(@leaf), class: "stretched-link" do %>
+      <span class="for-screen-reader">Bookmark: Resume reading where you left off</span>
+    <% end %>
+
+    <%= tag.span class: "bookmark", style: "--progress: #{ @leaf.position_as_percentage }%" do %>
       <div class="flex align-center gap-half">
         <span class="bookmark__icon">
           <svg viewBox="0 0 64 64" width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
@@ -8,7 +12,10 @@
           </svg>
         </span>
       </div>
-      <span class="for-screen-reader">Bookmark: Resume reading where you left off</span>
+    <% end %>
+  <% else %>
+    <%= link_to book_path(@book), class: "stretched-link" do %>
+      <span class="for-screen-reader">Start reading the book</span>
     <% end %>
   <% end %>
 <% end %>
