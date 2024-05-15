@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
   before_action :set_users, only: %i[ new edit ]
+  before_action :ensure_editable, only: %i[ edit update destroy ]
 
   def index
     @books = Current.user.books.ordered
@@ -40,15 +41,19 @@ class BooksController < ApplicationController
 
   private
     def set_book
-      @book = Book.find(params[:id])
-    end
-
-    def book_params
-      params.require(:book).permit(:title, :subtitle, :author, :cover, :remove_cover)
+      @book = Book.find params[:id]
     end
 
     def set_users
       @users = User.active.ordered
+    end
+
+    def ensure_editable
+      head :forbidden unless @book.editable?
+    end
+
+    def book_params
+      params.require(:book).permit(:title, :subtitle, :author, :cover, :remove_cover)
     end
 
     def update_accesses(book)
