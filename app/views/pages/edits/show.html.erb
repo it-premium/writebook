@@ -1,4 +1,5 @@
 <% content_for(:title) { "Changes to #{ @page.title }" } %>
+<% @layout_class = "books" %>
 
 <% content_for :header do %>
   <nav>
@@ -17,9 +18,34 @@
   </nav>
 <% end %>
 
-<header class="txt-align-center">
-  <span class="btn btn--reversed txt-medium center">Reviewing edits in this version</span>
-</header>
+<div class="library">
+  <section>
+    <header class="flex align-center gap">
+      <%= link_to root_path, class: "btn btn--plain txt-small flex-item-justify-start" do %>
+        <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Previous version</span>
+      <% end %>
 
-<h1><%= format_diff_changes(@edit.generate_diff(:title)) %></h1>
-<%= format_diff_changes(@edit.generate_diff(:body)) %>
+      <h2 class="btn btn--reversed txt-medium center margin-none overflow-ellipsis">
+        <%= "#{ time_ago_in_words(@edit.created_at) } ago" %>
+      </h2>
+
+      <%= link_to root_path, class: "btn btn--plain txt-small flex-item-justify-end" do %>
+        <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Next version</span>
+      <% end %>
+    </header>
+
+    <%= @page.body.to_html %>
+  </section>
+
+  <section>
+    <header class="flex align-center gap">
+      <h2 class="btn btn--positive txt-medium center margin-none">
+        Current version
+      </h2>
+    </header>
+
+    <%= @page.body.to_html %>
+  </section>
+</div>

@@ -1,3 +1,6 @@
+<% edit = leaf.edits.sorted.last %>
+
 <hr class="margin-block-end half-width margin-none-inline">
-<h3 class="txt-medium margin-block-half">Revision history</h3>
-<%= render leaf.edits.sorted %>
+<span class="txt-small--responsive">
+  Last updated <%= link_to time_ago_in_words(edit.created_at), book_page_edit_path(edit.leaf.book, edit.leaf.leafable, edit) %> ago.
+</span>
