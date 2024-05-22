@@ -5,6 +5,7 @@ module Leafable
 
   included do
     has_one :leaf, as: :leafable, inverse_of: :leafable, touch: true
+    has_one :book, through: :leaf
   end
 
   class_methods do

@@ -12,31 +12,37 @@
       <%= link_to books_path do %>
         <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
       <% end %> ▸
-      <%= link_to @book.title, @book %> ▸
-      <strong><%= @edit.leafable.title %></strong>
+      <%= link_to @page.book.title, @page.book %> ▸
+      <strong><%= @page.title %></strong>
     </div>
   </nav>
 <% end %>
 
 <div class="library">
   <section>
-    <header class="flex align-center gap">
-      <%= link_to root_path, class: "btn btn--plain txt-small flex-item-justify-start" do %>
-        <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
-        <span class="for-screen-reader">Previous version</span>
-      <% end %>
+    <%= turbo_frame_tag :previous_version do %>
+      <header class="flex align-center gap">
+        <% if @edit.previous %>
+          <%= link_to page_edit_path(@page, @edit.previous), class: "btn btn--plain txt-small flex-item-justify-start" do %>
+            <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Previous version</span>
+          <% end %>
+        <% end %>
 
-      <h2 class="btn btn--reversed txt-medium center margin-none overflow-ellipsis">
-        <%= "#{ time_ago_in_words(@edit.created_at) } ago" %>
-      </h2>
+        <h2 class="btn btn--reversed txt-medium center margin-none overflow-ellipsis">
+          <%= "#{ time_ago_in_words(@edit.created_at) } ago" %>
+        </h2>
 
-      <%= link_to root_path, class: "btn btn--plain txt-small flex-item-justify-end" do %>
-        <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
-        <span class="for-screen-reader">Next version</span>
-      <% end %>
-    </header>
+        <% if @edit.next %>
+          <%= link_to page_edit_path(@page, @edit.next), class: "btn btn--plain txt-small flex-item-justify-end" do %>
+            <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Next version</span>
+          <% end %>
+        <% end %>
+      </header>
 
-    <%= @page.body.to_html %>
+      <%= @edit.page.body.to_html %>
+    <% end %>
   </section>
 
   <section>

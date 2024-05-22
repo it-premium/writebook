@@ -4,23 +4,20 @@ module Leaf::Editable
   included do
     has_many :edits, dependent: :delete_all
 
-    after_create :record_initial_edit
     after_update :record_moved_to_trash, if: :was_trashed?
   end
 
   def edit(leafable_params)
     transaction do
+      edits.revision.create!(leafable: leafable)
+
       new_leafable = leafable.dup.tap { |l| l.update!(leafable_params) }
+      # TODO: can we see if the update actually changed something, and skip creating the edit if not?
       update!(leafable: new_leafable)
-      edits.revision.create!(leafable: new_leafable)
     end
   end
 
   private
-    def record_initial_edit
-      edits.creation.create!(leafable: leafable)
-    end
-
     def record_moved_to_trash
       edits.trash.create!(leafable: leafable)
     end

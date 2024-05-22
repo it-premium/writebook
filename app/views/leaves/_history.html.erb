@@ -1,6 +1,7 @@
-<% edit = leaf.edits.sorted.last %>
+<% if edit = leaf.edits.sorted.first %>
+  <hr class="margin-block-end half-width margin-none-inline">
 
-<hr class="margin-block-end half-width margin-none-inline">
-<span class="txt-small--responsive">
-  Last updated <%= link_to time_ago_in_words(edit.created_at), book_page_edit_path(edit.leaf.book, edit.leaf.leafable, edit) %> ago.
-</span>
+  <span class="txt-small--responsive">
+    Last updated <%= link_to time_ago_in_words(edit.created_at), page_edit_path(edit.leaf.leafable, edit) %> ago.
+  </span>
+<% end %>
