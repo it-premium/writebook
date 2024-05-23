@@ -6,7 +6,14 @@
 }
 
 body:has(.page--section) {
+  --btn-background: var(--color-subtle);
+
   background-color: var(--color-subtle);
+
+  :is(#header, #footer) {
+    background-color: var(--color-subtle);
+    border-color: var(--color-subtle-dark);
+  }
 }
 
 :is(.page--picture, .page--section) {
