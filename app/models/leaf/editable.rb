@@ -7,12 +7,15 @@ module Leaf::Editable
     after_update :record_moved_to_trash, if: :was_trashed?
   end
 
-  def edit(leafable_params)
+  def edit(params)
+    leaf_params = params.slice(:title)
+    leafable_params = params.except(:title)
+
     transaction do
       new_leafable = leafable.dup_with_attachments.tap { |l| l.update!(leafable_params) }
 
       edits.revision.create!(leafable: leafable)
-      update!(leafable: new_leafable)
+      update! leaf_params.merge(leafable: new_leafable)
     end
   end
 

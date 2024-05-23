@@ -22,7 +22,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     put leafable_path(leaves(:welcome_page)), params: { page: { title: "Better welcome", body: "With even more interesting words." } }
     assert_redirected_to leafable_path(leaves(:welcome_page).reload)
 
-    updated_page = leaves(:welcome_page).page
+    updated_page = Page.last
     assert_equal "Better welcome", updated_page.title
     assert_equal "With even more interesting words.", updated_page.body.content
   end

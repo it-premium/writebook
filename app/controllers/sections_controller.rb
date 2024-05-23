@@ -7,7 +7,7 @@ class SectionsController < ApplicationController
 
   def create
     @leafable = new_section
-    @book.press @leafable
+    @book.press @leafable, leaf_params
 
     respond_to do |format|
       format.turbo_stream { render }
@@ -37,10 +37,10 @@ class SectionsController < ApplicationController
 
   private
     def new_section
-      Section.new section_params
+      Section.new
     end
 
-    def section_params
+    def leaf_params
       params.require(:section).permit(:title)
     end
 end

@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
 
   def create
     @leafable = new_picture
-    @book.press @leafable
+    @book.press @leafable, leaf_params
 
     respond_to do |format|
       format.turbo_stream { render }
@@ -41,6 +41,10 @@ class PicturesController < ApplicationController
     end
 
     def picture_params
-      params.require(:picture).permit(:title, :image)
+      params.require(:picture).permit(:image)
+    end
+
+    def leaf_params
+      params.require(:picture).permit(:title)
     end
 end

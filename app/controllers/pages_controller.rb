@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   def create
     @leafable = new_page
-    @book.press @leafable
+    @book.leaves.create! leaf_params.merge(leafable: @leafable)
 
     respond_to do |format|
       format.turbo_stream { render }
@@ -48,5 +48,9 @@ class PagesController < ApplicationController
 
     def page_params
       params.require(:page).permit(:title, :body)
+    end
+
+    def leaf_params
+      params.require(:page).permit(:title)
     end
 end
