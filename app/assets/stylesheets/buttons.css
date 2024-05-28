@@ -3,6 +3,8 @@
 }
 
 .btn {
+  --transition: 300ms ease;
+
   align-items: center;
   background-color: var(--btn-background, var(--color-ink-reversed));
   border-radius: var(--btn-border-radius, 2em);
@@ -16,6 +18,12 @@
   justify-content: center;
   padding: var(--btn-padding, 0.5em 1.1em);
   pointer-events: auto;
+  transition:
+    background-color var( --transition),
+    border var( --transition),
+    color var( --transition),
+    filter var( --transition),
+    opacity var( --transition);
 
   /* Default icon styles */
   &:where(:has(img, svg)) {
