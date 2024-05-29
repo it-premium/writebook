@@ -33,7 +33,7 @@
   }
 }
 
-.arrangement-adding-mode
+.arrangement-adding-mode {
   .arrangement__item {
     * {
       pointer-events: none;
