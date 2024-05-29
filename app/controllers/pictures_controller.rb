@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
 
   def create
     @leafable = new_picture
-    @book.press @leafable, leaf_params
+    @book.leaves.create! leaf_params.merge(leafable: @leafable)
 
     respond_to do |format|
       format.turbo_stream { render }
@@ -22,7 +22,7 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @leaf.edit picture_params
+    @leaf.edit leafable_params: picture_params, leaf_params: leaf_params
 
     respond_to do |format|
       format.turbo_stream { render }
@@ -45,6 +45,6 @@ class PicturesController < ApplicationController
     end
 
     def leaf_params
-      params.require(:picture).permit(:title)
+      params.require(:leaf).permit(:title)
     end
 end

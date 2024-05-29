@@ -6,7 +6,7 @@ class Pages::EditsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show an edit" do
-    leaves(:welcome_page).edit(body: "Completely new content")
+    leaves(:welcome_page).edit leafable_params: { body: "Completely new content" }
 
     get page_edit_url(leaves(:welcome_page).page, leaves(:welcome_page).edits.last)
 

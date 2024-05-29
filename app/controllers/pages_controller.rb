@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    @leaf.edit page_params
+    @leaf.edit leafable_params: page_params, leaf_params: leaf_params
 
     respond_to do |format|
       format.turbo_stream { render }
@@ -47,10 +47,10 @@ class PagesController < ApplicationController
     end
 
     def page_params
-      params.require(:page).permit(:title, :body)
+      params.require(:page).permit(:body)
     end
 
     def leaf_params
-      params.require(:page).permit(:title)
+      params.require(:leaf).permit(:title)
     end
 end

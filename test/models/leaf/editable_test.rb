@@ -2,7 +2,7 @@ require "test_helper"
 
 class Leaf::EditableTest < ActiveSupport::TestCase
   test "editing a leafable records the edit" do
-    leaves(:welcome_page).edit(body: "New body")
+    leaves(:welcome_page).edit leafable_params: { body: "New body" }
 
     assert_equal "New body", leaves(:welcome_page).page.body.content
 
@@ -13,7 +13,7 @@ class Leaf::EditableTest < ActiveSupport::TestCase
   test "editing a leafable with an attachment includes the attachments in the new version" do
     assert leaves(:reading_picture).picture.image.attached?
 
-    leaves(:reading_picture).edit(title: "New title")
+    leaves(:reading_picture).edit leaf_params: { title: "New title" }
 
     assert_equal "New title", leaves(:reading_picture).title
     assert leaves(:reading_picture).picture.image.attached?

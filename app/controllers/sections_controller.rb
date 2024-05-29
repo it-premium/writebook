@@ -7,7 +7,7 @@ class SectionsController < ApplicationController
 
   def create
     @leafable = new_section
-    @book.press @leafable, leaf_params
+    @book.leaves.create! leaf_params.merge(leafable: @leafable)
 
     respond_to do |format|
       format.turbo_stream { render }
@@ -22,7 +22,7 @@ class SectionsController < ApplicationController
   end
 
   def update
-    @leaf.edit section_params
+    @leaf.edit leaf_params: leaf_params
 
     respond_to do |format|
       format.turbo_stream { render }
