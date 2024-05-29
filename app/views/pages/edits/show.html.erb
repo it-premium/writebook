@@ -35,7 +35,7 @@
         <% end %>
 
         <h2 class="btn btn--reversed txt-medium margin-none overflow-ellipsis">
-          <%= "#{ time_ago_in_words(@edit.created_at) } ago" %>
+          <%= time_ago_in_words(@edit.created_at) %> ago
         </h2>
 
         <% if @edit.next %>
