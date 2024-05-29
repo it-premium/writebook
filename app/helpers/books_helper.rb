@@ -34,17 +34,12 @@ module BooksHelper
 
   def link_to_previous_leafable(leaf)
     if previous_leaf = leaf.previous
-      link_to leafable_path(previous_leaf), data: { **hotkey_data_attributes("left") }, class: "txt-ink txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-start flex-item-justify-start", hidden: true do
-        tag.span(class: "btn") do
-          image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span("Previous", class: "for-screen-reader")
-        end + tag.span(previous_leaf.title, class: "overflow-ellipsis")
+      link_to leafable_path(previous_leaf), data: { **hotkey_data_attributes("left") }, class: "btn flex-item-justify-start" do
+        image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span(previous_leaf.title, class: "for-screen-reader")
       end
     else
-      link_to book_path(leaf.book), data: { **hotkey_data_attributes("left") }, class: "txt-ink txt-medium txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-end flex-item-justify-end", hidden: true do
-        tag.span("Beginning", class: "overflow-ellipsis") +
-        tag.span(class: "btn txt-medium") do
-          image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span("Beginning", class: "for-screen-reader")
-        end
+      link_to book_path(leaf.book), data: { **hotkey_data_attributes("left") }, class: "btn flex-item-justify-start" do
+        image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span("Table of contents", class: "for-screen-reader")
       end
     end
   end
