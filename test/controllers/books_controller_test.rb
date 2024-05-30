@@ -41,4 +41,12 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert book.accessable?(user: users(:jason))
     assert_not book.editable?(user: users(:jason))
   end
+
+  test "show only shows books the current user can access" do
+    get book_url(books(:manual))
+    assert_response :not_found
+
+    get book_url(books(:handbook))
+    assert_response :success
+  end
 end

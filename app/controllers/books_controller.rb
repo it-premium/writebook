@@ -41,7 +41,7 @@ class BooksController < ApplicationController
 
   private
     def set_book
-      @book = Book.find params[:id]
+      @book = Current.user.books.find params[:id]
     end
 
     def set_users
