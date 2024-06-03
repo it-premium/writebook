@@ -1,5 +1,6 @@
 <div class="page--picture">
-  <%= form_with model: [ book, picture ], id: "picture-editor", format: :html do |form| %>
+
+  <%= form_with model: picture, url: leafable_path(picture.leaf), method: :put, id: "picture-editor", format: :html do |form| %>
     <label class="input input--file input--picture unpad" data-controller="upload-preview">
       <%= image_tag picture.image.attached? ? picture.image.variant(:large) : "default-picture.webp", alt: "Picture",
           data: { upload_preview_target: "image" } %>
