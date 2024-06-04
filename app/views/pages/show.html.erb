@@ -8,6 +8,4 @@
   <%= @page.body.to_html %>
 </div>
 
-<% content_for :footer do %>
-  <%= render "leaves/navigation", leaf: @leaf %>
-<% end %>
+<%= render "leaves/navigation", leaf: @leaf %>
