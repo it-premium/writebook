@@ -3,3 +3,5 @@
 <% else %>
   <%= turbo_stream.append :leaves, partial: "leaves/edit", locals: { leaf: @leaf } %>
 <% end %>
+
+<%= turbo_stream.scroll_into_view @leaf, animation: :wiggle %>
