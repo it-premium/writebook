@@ -14,7 +14,9 @@ class MarkdownRenderer < Redcarpet::Render::HTML
   end
 
   def header(text, header_level)
-    "<h#{header_level} id='#{unique_id(text)}'>#{text}</h#{header_level}>"
+    unique_id(text).then do |id|
+      "<h#{header_level} id='#{id}'>#{text} <a href='##{id}' class='header-anchor' aria-hidden='true'>#</a></h#{header_level}>"
+    end
   end
 
   def image(url, title, alt_text)

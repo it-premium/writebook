@@ -46,6 +46,14 @@
   text-wrap: pretty;
 }
 
+.header-anchor {
+  display: none;
+}
+
+:where(h1, h2, h3, h4, h5, h6):hover .header-anchor {
+  display: inline;
+}
+
 hr {
   border-color: var(--color-subtle-dark);
   border-style: var(--border-style, solid) none none;
