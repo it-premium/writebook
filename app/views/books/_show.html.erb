@@ -122,10 +122,16 @@
     </label>
 
     <% if book.editable? %>
-      <label class="btn btn--pulse-when-checked txt-medium flex-item-justify-end">
+      <label class="btn arrange-mode__button txt-medium flex-item-justify-end disable-when-deleting">
         <input type="checkbox" name="arrange-mode" id="arrange-mode" data-action="arrangement#setArrangeMode">
         <%= image_tag "rearrange.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">Rearrange</span>
+      </label>
+
+      <label class="btn delete-mode__button txt-medium disable-when-arranging">
+        <input type="checkbox" id="delete-mode">
+        <%= image_tag "minus.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Delete pages</span>
       </label>
     <% end %>
   </div>

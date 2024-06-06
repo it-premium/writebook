@@ -182,3 +182,43 @@
     font-size: 0.8em;
   }
 }
+
+/* Delete mode */
+.leaf__delete {
+  --hover-color: var(--color-negative);
+  --hover-size: max(2px, 0.08em);
+
+  display: none;
+
+  .toc__container:where(:has(#delete-mode:checked)) & {
+    display: flex;
+
+    :is(.delete-mode__button:has(input:checked)) {
+      --btn-background: var(--color-negative);
+    }
+  }
+
+  .toc__container:where(:has(#toc-grid:checked)) & .btn {
+    margin-block-end: calc(-0.5 * var(--btn-size));
+    margin-inline: auto;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.toc__container:where(:has(#delete-mode:checked)) {
+  .disable-when-deleting {
+    cursor: not-allowed;
+    filter: grayscale(100%) contrast(0.5);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.delete-mode__button:has(input:checked) {
+  --btn-background: var(--color-negative);
+}
+
+.arrange-mode__button:has(input:checked)  {
+  --btn-background: var(--color-link);
+}

@@ -22,14 +22,20 @@
         pointer-events: none;
       }
 
-      .btn {
+      .btn:not(.arrangement__handle) {
         opacity: 0.3;
       }
     }
 
     &:where(:has(#toc-list:checked)) {
-      .arrangement__handle {
-        display: block;
+      .btn:is(.arrangement__handle) {
+        display: flex;
+      }
+    }
+
+    &:where(:has(#toc-grid:checked)) {
+      .toc__thumbnail {
+        border-color: var(--color-link);
       }
     }
   }
@@ -59,12 +65,8 @@
   text-wrap: nowrap;
 }
 
-.arrangement__handle {
-  aspect-ratio: 1;
-  block-size: 0.8em;
-  cursor: grab;
+.btn:is(.arrangement__handle) {
   display: none;
-  margin: auto;
 }
 
 .arrangement-selected {

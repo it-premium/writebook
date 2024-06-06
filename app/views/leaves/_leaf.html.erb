@@ -1,5 +1,10 @@
 <%= leaf_item_tag(leaf) do %>
-  <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "arrangement__handle translucent colorize--black" %>
+  <span class="btn btn--link arrangement__handle txt-small">
+    <%= image_tag "handle.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Move <%= leaf.title %></span>
+  </span>
+
+  <%= render "leaves/delete", leaf: leaf %>
 
   <div class="toc__thumbnail">
     <%= link_to edit_leafable_path(leaf), class: "toc__link hide_from_reading_mode", data: { turbo_frame: "_top" } do %>

@@ -15,7 +15,7 @@ module BooksHelper
   def book_part_create_button(book, kind, **, &)
     url = url_for [ book, kind.new ]
 
-    button_to url, class: "btn btn--plain txt-medium fill-transparent disable-when-arranging", draggable: true,
+    button_to url, class: "btn btn--plain txt-medium fill-transparent disable-when-arranging disable-when-deleting", draggable: true,
       data: {
         action: "dragstart->arrangement#dragStartCreate dragend->arrangement#dragEndCreate",
         arrangement_url_param: url
