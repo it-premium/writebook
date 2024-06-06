@@ -8,8 +8,7 @@ export default class extends Controller {
 
   #timer
 
-  submit(event) {
-    event.preventDefault()
+  submit() {
     this.#save()
   }
 
