@@ -14,11 +14,13 @@ body:has(.page--section) {
 
 .page-toolbar {
   --padding-block: 0.5em;
+  --padding-inline: 1.1em;
 
   border-radius: 5em;
   display: inline-flex;
   margin: var(--block-space-half) auto;
-  padding: var(--padding-block) 1.1em;
+  min-width: 0;
+  padding: var(--padding-block) var(--padding-inline);
   transition: background-color 300ms ease;
 
   house-md-toolbar {

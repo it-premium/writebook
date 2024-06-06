@@ -50,6 +50,7 @@ body {
   display: flex;
   inset: 0 0 auto;
   justify-content: center;
+  min-width: 0;
   padding-inline: var(--inline-space);
   position: sticky;
   view-transition-name: toolbar;
