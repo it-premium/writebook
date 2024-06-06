@@ -178,8 +178,6 @@
 }
 
 .toc__wordcount {
-  display: inline-flex;
-
   .toc__container:where(:has(#toc-list:checked)) & {
     font-size: 0.8em;
   }
