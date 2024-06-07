@@ -25,7 +25,7 @@ abort "You must specify a version, e.g. `bin/release 1.0.0`" unless VERSION
 
 def announcing(message)
   puts "\n\e[1;36m#{message}\e[0m"
-  yield
+  yield if block_given?
 end
 
 on(:local) do
@@ -38,16 +38,20 @@ on(:local) do
   end
 end
 
-announcing "Tagging as #{VERSION}" do
-  on(:local) do
-    execute :git, :fetch, :origin, "--tags"
+if VERSION == "-"
+  announcing "Skipped tags"
+else
+  announcing "Tagging as #{VERSION}" do
+    on(:local) do
+      execute :git, :fetch, :origin, "--tags"
 
-    unless system "git tag -a v#{VERSION} -m 'Version #{VERSION}\n\n- list important changes here' -e"
-      abort "Failed to create tag; check that the version doesn't already exist"
-    end
+      unless system "git tag -a v#{VERSION} -m 'Version #{VERSION}\n\n- list important changes here' -e"
+        abort "Failed to create tag; check that the version doesn't already exist"
+      end
 
-    unless test :git, :push, "--tags"
-      abort "Failed to push tag; check that the version doesn't already exist"
+      unless test :git, :push, "--tags"
+        abort "Failed to push tag; check that the version doesn't already exist"
+      end
     end
   end
 end
