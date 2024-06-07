@@ -62,6 +62,22 @@
   }
 }
 
+.input--textara {
+  --input-padding: 0.5em;
+
+  line-height: 1.1;
+  min-block-size: calc(4lh + (2 * var(--input-padding)));
+  min-inline-size: 100%;
+  padding-block: var(--input-padding);
+  padding-inline: calc(var(--input-padding) + calc((1lh - 1ex) / 2));
+
+  @supports (field-sizing: content) {
+    field-sizing: content;
+    max-block-size: calc(10lh + (2 * var(--input-padding)));
+    min-block-size: calc(2lh + (2 * var(--input-padding)));
+  }
+}
+
 /* Switches */
 .switch {
   block-size: 1.75em;
