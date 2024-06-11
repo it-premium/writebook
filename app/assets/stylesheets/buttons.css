@@ -6,7 +6,7 @@
   --transition: 300ms ease;
 
   align-items: center;
-  background-color: var(--btn-background, var(--color-ink-reversed));
+  background-color: var(--btn-background, transparent);
   border-radius: var(--btn-border-radius, 2em);
   border: var(--btn-border-size, 1px) solid var(--btn-border-color, var(--color-subtle-dark));
   color: var(--btn-color, var(--color-ink));
@@ -148,11 +148,6 @@
   --btn-background: var(--color-ink);
   --btn-color: var(--color-bg);
   --outline-color: var(--color-ink);
-}
-
-.btn--transparent {
-  --btn-background: transparent;
-  --btn-border-color: transparent;
 }
 
 :is(.btn--link, .btn--negative, .btn--positive, .btn--reversed) {
