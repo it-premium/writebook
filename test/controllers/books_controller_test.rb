@@ -13,6 +13,34 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", text: "Manual", count: 0
   end
 
+  test "index includes published books, even when the user does not have access" do
+    books(:manual).update!(published: true)
+
+    get books_url
+
+    assert_response :success
+    assert_select "h2", text: "Handbook"
+    assert_select "h2", text: "Manual"
+  end
+
+  test "index shows published books when not logged in" do
+    books(:manual).update!(published: true)
+
+    sign_out
+    get books_url
+
+    assert_response :success
+    assert_select "h2", text: "Handbook", count: 0
+    assert_select "h2", text: "Manual"
+  end
+
+  test "index redirects to login if not signed in and no published books exist" do
+    sign_out
+    get books_url
+
+    assert_redirected_to new_session_url
+  end
+
   test "create makes the current user an editor" do
     assert_difference -> { Book.count }, +1 do
       post books_url, params: { book: { title: "New Book", everyone_access: false } }

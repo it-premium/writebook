@@ -15,23 +15,16 @@
 
 <% content_for :header do %>
   <nav>
-    <% if Current.user %>
-      <%= link_to books_path, class: "btn flex-item-justify-start" do %>
-        <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
-        <span class="for-screen-reader">Go back</span>
-      <% end %>
-    <% else %>
-      <span class="spacer flex-item-justify-start"></span>
+    <%= link_to books_path, class: "btn flex-item-justify-start" do %>
+      <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Go back</span>
     <% end %>
 
     <div class="breadcrumbs">
-      <% if Current.user %>
-        <%= link_to books_path do %>
-          <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-        <% end %>
-      <% else %>
+      <%= link_to books_path do %>
         <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
       <% end %> ▸
+
       <strong><%= book.title %></strong>
     </div>
 

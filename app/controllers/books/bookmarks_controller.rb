@@ -1,6 +1,8 @@
 class Books::BookmarksController < ApplicationController
   include BookScoped
 
+  allow_unauthenticated_access
+
   def show
     @leaf = @book.leaves.find_by(id: last_read_leaf_id) if last_read_leaf_id.present?
   end

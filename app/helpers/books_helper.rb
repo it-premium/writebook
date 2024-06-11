@@ -1,4 +1,12 @@
 module BooksHelper
+  def link_to_book_for_accessable_state(accessable, book, **, &)
+    if accessable
+      link_to book_path(book), **, &
+    else
+      link_to public_book_path(book.slug), **, &
+    end
+  end
+
   def book_toc_tag(book, &)
     tag.ol class: "toc", tabindex: 0,
       data: {
