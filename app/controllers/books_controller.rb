@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @leaves = @book.leaves.with_leafables.positioned
+    @leaves = @book.leaves.active.with_leafables.positioned
   end
 
   def edit

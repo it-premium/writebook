@@ -4,7 +4,7 @@ class Books::BookmarksController < ApplicationController
   include BookScoped
 
   def show
-    @leaf = @book.leaves.find_by(id: last_read_leaf_id) if last_read_leaf_id.present?
+    @leaf = @book.leaves.active.find_by(id: last_read_leaf_id) if last_read_leaf_id.present?
   end
 
   private

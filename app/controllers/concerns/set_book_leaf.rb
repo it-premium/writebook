@@ -12,7 +12,7 @@ module SetBookLeaf
     end
 
     def set_leaf
-      @leaf = @book.leaves.find(params[:id])
+      @leaf = @book.leaves.active.find(params[:id])
     end
 
     def set_leafable
