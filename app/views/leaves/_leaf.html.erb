@@ -18,7 +18,7 @@
 
       <%= leaf.title if leaf.leafable.is_a?(Section) %>
 
-      <%= leaf.leafable.body.to_html if leaf.leafable.is_a?(Page) %>
+      <%= leaf.page.html_preview if leaf.leafable.is_a?(Page) %>
 
       <% if leaf.leafable.is_a?(Picture) %>
         <%= image_tag leaf.leafable.image.attached? ? leaf.leafable.image.variant(:large) : "default-picture.webp" %>
