@@ -25,6 +25,15 @@
 
     <span class="separator margin-inline-half" aria-hidden="true"></span>
 
+    <label class="btn txt-small">
+      <%= check_box_tag "theme_switch", "dark", !@section.theme.blank?, class: "switch__input",
+          data: { controller: "remote-click--trigger", remote_click__trigger_remote_click_outlet: "#section_theme", action: "remote-click--trigger#click" } %>
+      <%= image_tag "theme-switch.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Change theme</span>
+    </label>
+
+    <span class="separator margin-inline-half" aria-hidden="true"></span>
+
     <button type="submit" form="section-editor" class="btn flex page-toolbar__save flex-item-justify-end flex-item-no-shrink txt-small">
       <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Save</span>
@@ -32,7 +41,7 @@
   </div>
 <% end %>
 
-<div class="page--section">
+<div class="page--section <%= "theme--dark" if @section.theme == "dark" %>" data-controller="toggle-class" data-toggle-class-toggle-class="theme--dark">
   <%= render "sections/form", book: @book, section: @section %>
 </div>
 
