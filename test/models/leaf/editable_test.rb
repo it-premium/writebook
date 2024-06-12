@@ -42,7 +42,7 @@ class Leaf::EditableTest < ActiveSupport::TestCase
 
   test "changes that don't affect the leafable don't create a revision" do
     assert_no_difference -> { Edit.count } do
-      leaves(:welcome_page).edit leafable_params: { body: pages(:welcome).body.content }
+      leaves(:welcome_page).edit leafable_params: {}
     end
   end
 

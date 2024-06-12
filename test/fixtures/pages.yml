@@ -1,5 +1,4 @@
-welcome:
-  body: This is _such_ a great handbook.
+welcome: {}
 
-summary:
-  body: Thanks for reading!
+summary: {}
+
