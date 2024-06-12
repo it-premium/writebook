@@ -267,21 +267,24 @@ export default class extends Controller {
       clone.style.pointerEvents = "none"
       clone.style.transition = "top 160ms, left 160ms"
 
-      const newRect = this.#getElementRect(item)
-      this.#setElementRect(clone, newRect)
-
       this.layerTarget.append(clone)
       item.clone = clone
     }
+
+    this.#updateLayer()
   }
 
   #updateLayer() {
+    const updates = []
+
     for (const item of this.itemTargets) {
       if (item.clone) {
-        const newRect = this.#getElementRect(item)
-        newRect.x += 400
-        this.#setElementRect(item.clone, newRect)
+        updates.push({ el: item.clone, rect: this.#getElementRect(item) })
       }
+    }
+
+    for (const { el, rect } of updates) {
+      this.#setElementRect(el, rect)
     }
   }
 
