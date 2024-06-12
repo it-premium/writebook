@@ -134,9 +134,9 @@
 
     <div class="position-relative">
       <menu class="toc margin-none" tabindex="0" data-arrangement-target="container" data-action="<%= arrangement_actions %>">
-        <%= turbo_frame_tag :leaves, data: { arrangement_target: "list" } do %>
-          <%= render partial: "leaves/leaf", collection: @leaves, as: :leaf %>
-        <% end %>
+        <%= turbo_frame_tag :leaves, data: { arrangement_target: "list" } do -%>
+          <%= render partial: "leaves/leaf", collection: @leaves, as: :leaf -%>
+        <% end -%>
       </menu>
 
       <div data-arrangement-target="layer" class="toc"></div>
