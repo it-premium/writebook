@@ -9,7 +9,7 @@ class Page < ApplicationRecord
   has_markdown :body
 
   def html_preview
-    preview_renderer.render(body_preview).html_safe
+    preview_renderer.render(body_preview)
   end
 
   private

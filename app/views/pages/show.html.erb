@@ -3,7 +3,7 @@
 <%= render "leaves/header", book: @book, leaf: @leaf %>
 
 <div class="page__body">
-  <%= @page.body.to_html %>
+  <%= sanitize @page.body.to_html %>
 </div>
 
 <% content_for :footer do %>

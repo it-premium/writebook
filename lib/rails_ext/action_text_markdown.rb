@@ -1,7 +1,7 @@
 module ActionText
   class Markdown < Record
     DEFAULT_RENDERER_OPTIONS = {
-      filter_html: true
+      filter_html: false
     }
 
     DEFAULT_MARKDOWN_EXTENSIONS = {
