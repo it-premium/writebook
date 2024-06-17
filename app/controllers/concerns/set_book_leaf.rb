@@ -19,6 +19,10 @@ module SetBookLeaf
       instance_variable_set "@#{instance_name}", @leaf.leafable
     end
 
+    def ensure_editable
+      head :forbidden unless @book.editable?
+    end
+
     def model_class
       controller_leafable_name.constantize
     end

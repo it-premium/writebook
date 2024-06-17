@@ -1,6 +1,7 @@
 class LeafablesController < ApplicationController
   include SetBookLeaf
 
+  before_action :ensure_editable
   before_action :broadcast_being_edited_indicator, only: :update
 
   def new
