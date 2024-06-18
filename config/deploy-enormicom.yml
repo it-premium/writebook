@@ -1,5 +1,5 @@
 image: registry.kevinmcconnell.dev/workbook
 host: once-writebook-marketing-101
-tls_domain: enormicom-writebook.once.com
+tls_domain: enormicom-books.once.com
 ssh_user: app
 arch: linux/amd64
