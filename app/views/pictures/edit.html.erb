@@ -9,7 +9,7 @@
       <span>▸</span>
       <%= link_to @book.title, @book %>
       <span>▸</span>
-      <%= form_with model: [ @book, @leaf ], url: leafable_path(@leaf), class: "flex align-center gap-half flex-item-shrink", format: :html do |form| %>
+      <%= form_with model: [ @book, @leaf ], url: leafable_path(@leaf), class: "flex align-center gap-half flex-item-no-shrink", format: :html do |form| %>
         <strong class="min-width"><%= form.text_field :title, form: "picture-editor", class: "input full-width", autocomplete: "off" %></strong>
       <% end %>
     </div>
