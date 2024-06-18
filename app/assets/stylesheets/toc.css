@@ -142,6 +142,10 @@
   line-height: 1.2;
   text-decoration: none;
 
+  .toc__container:where(:has(#toc-grid:checked)) & {
+    font-weight: 700;
+  }
+
   .toc__container:where(:has(#toc-list:checked)) & {
     flex-direction: row;
     flex-grow: 1;
