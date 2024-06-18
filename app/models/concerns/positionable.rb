@@ -40,10 +40,6 @@ module Positionable
     other_positioned_siblings.after(self).first
   end
 
-  # TODO: the `followed_by` part of this API is a little strange. It's there so
-  # we can keep the move operation on the model, while still allowing a
-  # collection of items to be moved at once. Feels quite lop-sided though, so
-  # worth thinking of a different way to model this.
   def move_to_position(offset, followed_by: [])
     with_positioning_lock do
       all_to_move = [ self, *followed_by ]
