@@ -71,20 +71,6 @@
   padding: var(--padding-block) var(--padding-inline);
   transition: background-color 300ms ease;
 
-  house-md-toolbar {
-    --hover-size: 0;
-
-    padding: 0;
-
-    button, label {
-      flex-shrink: 0;
-
-      &:is(:focus, :hover) {
-        background-color: var(--color-bg);
-      }
-    }
-  }
-
   .separator {
     block-size: 100%;
     border-color: var(--color-bg);
