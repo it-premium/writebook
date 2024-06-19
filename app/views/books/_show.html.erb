@@ -69,13 +69,13 @@
     </h1>
 
     <div class="book__toolbar fill-white flex gap-half pad-block margin-block-end-half justify-center <%= "position-sticky" if book.editable? %>" data-controller="toc-view" data-toc-view-id-value="<%= dom_id(book) %>">
-      <label class="btn txt-medium">
+      <label class="btn txt-medium disable-when-empty">
         <input type="radio" name="view" id="toc-list" value="list" data-toc-view-target="switch" data-toc-view-type-value="list" data-action="toc-view#saveViewPref">
         <%= image_tag "view-list.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">List view</span>
       </label>
 
-      <label class="btn txt-medium flex-item-justify-start">
+      <label class="btn txt-medium flex-item-justify-start disable-when-empty">
         <input type="radio" name="view" id="toc-grid" value="grid" checked="checked" data-toc-view-target="switch" data-toc-view-type-value="grid" data-action="toc-view#saveViewPref">
         <%= image_tag "view-grid.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">Page view</span>
@@ -116,13 +116,13 @@
       <% end %>
 
       <% if book.editable? %>
-        <label class="btn arrange-mode__button txt-medium flex-item-justify-end disable-when-deleting">
+        <label class="btn arrange-mode__button txt-medium flex-item-justify-end disable-when-deleting disable-when-empty">
           <input type="checkbox" name="arrange-mode" id="arrange-mode" data-action="arrangement#setArrangeMode">
           <%= image_tag "rearrange.svg", aria: { hidden: true }, size: 24 %>
           <span class="for-screen-reader">Rearrange</span>
         </label>
 
-        <label class="btn delete-mode__button txt-medium disable-when-arranging">
+        <label class="btn delete-mode__button txt-medium disable-when-arranging disable-when-empty">
           <input type="checkbox" id="delete-mode">
           <%= image_tag "minus.svg", aria: { hidden: true }, size: 24 %>
           <span class="for-screen-reader">Delete pages</span>

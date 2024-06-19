@@ -246,3 +246,12 @@
 .arrange-mode__button:has(input:checked)  {
   --btn-background: var(--color-link);
 }
+
+body:not(:has(.toc__leaf)) {
+  .disable-when-empty {
+    cursor: not-allowed;
+    filter: grayscale(100%) contrast(0.5);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
