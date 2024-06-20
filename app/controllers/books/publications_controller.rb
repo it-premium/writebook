@@ -10,11 +10,8 @@ class Books::PublicationsController < ApplicationController
   end
 
   def update
-    if @book.update book_params
-      redirect_to book_publication_path(@book)
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @book.update! book_params
+    redirect_to @book
   end
 
   private

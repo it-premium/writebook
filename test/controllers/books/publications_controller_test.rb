@@ -12,7 +12,7 @@ class Books::PublicationsTest < ActionDispatch::IntegrationTest
       patch book_publication_url(@book), params: { book: { published: "1" } }
     end
 
-    assert_redirected_to book_publication_url(@book)
+    assert_redirected_to @book.reload
     assert_equal "manual", @book.slug
   end
 
@@ -23,8 +23,8 @@ class Books::PublicationsTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     patch book_publication_url(@book), params: { book: { slug: "new-slug" } }
-    assert_redirected_to book_publication_url(@book.reload)
+    assert_redirected_to @book.reload
 
-    assert_equal "new-slug", @book.reload.slug
+    assert_equal "new-slug", @book.slug
   end
 end

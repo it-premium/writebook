@@ -3,7 +3,7 @@
     <div class="flex flex-column align-center gap txt-medium">
       <% public_url = book_url(@book) %>
 
-      <%= form_with model: @book, url: book_publication_path(@book), class: "max-width" do |form| %>
+      <%= form_with model: @book, url: book_publication_path(@book), class: "max-width", data: { turbo_frame: "_top" } do |form| %>
         <%= form.hidden_field :publication, value: true %>
 
         <label class="flex flex-column gap full-width txt-align-center">
