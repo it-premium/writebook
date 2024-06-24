@@ -10,7 +10,12 @@
     <div class="breadcrumbs">
       <%= render "books/index_link" %>
       <span>▸</span>
-      <%= image_tag "people.svg", aria: { label: "People" }, size: 19, class: "colorize--black", alt: "People" %>
+      <%= link_to users_path, class: "btn borderless txt-small flex-item-no-shrink" do %>
+        <%= image_tag "people.svg", aria: { label: "People" }, size: 19, class: "colorize--black", alt: "People" %>
+        <span class="for-screen-reader">Manage people</span>
+      <% end %>
+      <span>▸</span>
+      <%= @user.name %>
     </div>
   </nav>
 <% end %>
