@@ -14,6 +14,6 @@ class Page < ApplicationRecord
 
   private
     def body_preview
-      body.content.to_s.first(700)
+      body.content.to_s.first(1024)
     end
 end
