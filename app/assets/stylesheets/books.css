@@ -36,9 +36,9 @@
 }
 
 .book__cover {
-  background-color: var(--color-subtle-light);
+  background-color: var(--color-bg);
   border-radius: 0.3em;
-  box-shadow: 0 0 0 1px var(--color-subtle);
+  box-shadow: 0 0 0 1px var(--color-subtle-dark);
   margin: auto;
   max-block-size: var(--cover-height, 75dvh);
 }

@@ -43,11 +43,11 @@
   }
 
   img {
-    border-radius: 0.5em;
+    border-radius: 0.4em;
   }
 
   input[type="file"] {
-    --input-border-color: var(--color-subtle-dark);
+    --input-border-color: transparent;
     --input-border-radius: 8px;
 
     block-size: 100%;

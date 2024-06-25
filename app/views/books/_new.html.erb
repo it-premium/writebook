@@ -1,12 +1,12 @@
-<figure class="library__book position-relative">
+<figure class="library__book library__book--empty position-relative">
   <div class="flex flex-column gap-half">
-    <div class="flex-inline center">
-      <%= image_tag "default-cover.webp", alt: "Book cover", class: "book__cover" %>
+    <div class="flex-inline center position-relative">
+      <%= image_tag "empty-cover.png", alt: "Book cover", class: "book__cover" %>
       <%= link_to new_book_path, class: "bookmark__link" do %>
         <span class="for-screen-reader">Create a new book</span>
       <% end %>
     </div>
-    <h2 class="margin-none flex flex-column txt-tight-lines txt-medium">
+    <h2 class="margin-none flex flex-column txt-tight-lines txt-large">
       <span class="btn btn--positive center">
         <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader"></span>
