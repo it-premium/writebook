@@ -14,27 +14,31 @@
 <% end %>
 
 <% content_for :header do %>
-  <nav>
+  <nav class="book__navbar">
     <%= link_to root_path, class: "btn" do %>
       <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Go back</span>
     <% end %>
 
+    <span class="btn btn--placeholder placeholder-start" aria-hidden="true"></span>
+
     <div class="breadcrumbs">
       <%= render "books/index_link" %>
-      <span>▸</span>
+      <span class="flex-item-no-shrink">▸</span>
       <strong><%= @book.title %></strong>
     </div>
 
     <%= link_to_first_leafable(@leaves) %>
 
-    <button class="btn" data-action="fullscreen#toggle" data-fullscreen-target="button">
+    <span class="btn btn--placeholder placeholder-end" aria-hidden="true"></span>
+
+    <button class="btn fullscreen" data-action="fullscreen#toggle" data-fullscreen-target="button">
       <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Enter fullscreen</span>
     </button>
 
     <% if @book.editable? %>
-      <%= link_to edit_book_path(@book), class: "btn" do %>
+      <%= link_to edit_book_path(@book), class: "btn settings" do %>
         <%= image_tag "settings.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">Edit book settings</span>
       <% end %>
@@ -113,7 +117,7 @@
 <% end %>
 
 <% content_for :footer do %>
-  <nav class="book__nav flex align-center gap-half">
+  <nav class="book__nav flex align-center justify-center">
     <a href="https://once.com/writebook" class="product__wordmark btn btn--plain txt-medium" target="_blank">
       <%= image_tag "writebook-icon.svg", aria: { hidden: true }, size: 24 %>
       <span>Made with Writebook</span>

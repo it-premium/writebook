@@ -4,9 +4,9 @@
 
     <div class="breadcrumbs">
       <%= render "books/index_link" %>
-      <span>▸</span>
+      <span class="flex-item-no-shrink">▸</span>
       <%= link_to book.title, book_slug_path(book) %>
-      <span>▸</span>
+      <span class="flex-item-no-shrink">▸</span>
       <strong><%= leaf.leafable.title %></strong>
     </div>
 

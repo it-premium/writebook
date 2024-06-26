@@ -1,9 +1,6 @@
 <% content_for :footer do %>
   <nav class="book__nav flex align-center gap">
-    <a href="https://once.com/writebook" class="btn btn--plain txt-medium flex-item-justify-start", target="_blank">
-      <%= image_tag "writebook-icon.svg", aria: { hidden: true }, size: 24 %>
-      <span class="for-screen-reader">Writebook</span>
-    </a>
+    <span class="btn btn--placeholder flex-item-justify-start"></span>
 
     <%= link_to_next_leafable(leaf, hotkey: false, for_edit: true) %>
 

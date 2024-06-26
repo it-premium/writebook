@@ -123,6 +123,24 @@
   }
 }
 
+.book__navbar {
+  .btn--placeholder {
+    display: none;
+  }
+
+  &:has(.btn.fullscreen):has(.btn.settings) {
+    .placeholder-start {
+      display: inline-flex;
+    }
+  }
+
+  &:not(:has(.btn.fullscreen)):not(:has(.btn.settings)) {
+    .placeholder-end {
+      display: inline-flex;
+    }
+  }
+}
+
 .book__sidebar {
   inset-block-start: var(--block-space);
   position: sticky;
