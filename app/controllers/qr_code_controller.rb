@@ -2,10 +2,10 @@ class QrCodeController < ApplicationController
   allow_unauthenticated_access
 
   def show
-    url = Base64.urlsafe_decode64(params[:id])
-    qr_code = RQRCode::QRCode.new(url).as_svg(viewbox: true, fill: :white, color: :black)
+    qr_code_link = QrCodeLink.from_signed(params[:id])
+    svg = RQRCode::QRCode.new(qr_code_link.url).as_svg(viewbox: true, fill: :white, color: :black)
 
     expires_in 1.year, public: true
-    render plain: qr_code, content_type: "image/svg+xml"
+    render plain: svg, content_type: "image/svg+xml"
   end
 end

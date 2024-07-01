@@ -16,7 +16,7 @@ module InvitationsHelper
   end
 
   def qr_code_image(url)
-    id = Base64.urlsafe_encode64(url)
-    image_tag qr_code_path(id), class: "qr-code center", alt: "QR Code"
+    qr_code_link = QrCodeLink.new(url)
+    image_tag qr_code_path(qr_code_link.signed), class: "qr-code center", alt: "QR Code"
   end
 end
