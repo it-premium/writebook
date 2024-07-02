@@ -3,8 +3,6 @@ import { Controller } from "@hotwired/stimulus"
 const SWIPE_THRESHOLD = 50
 
 export default class extends Controller {
-  static targets = ["button"]
-
   connect() {
     this.element.addEventListener("touchstart", this.#handleTouchStart.bind(this), false)
     this.element.addEventListener("touchend", this.#handleTouchEnd.bind(this), false)
@@ -23,12 +21,18 @@ export default class extends Controller {
 
     if (deltaX > SWIPE_THRESHOLD && deltaY < SWIPE_THRESHOLD) {
       if (this.startX > endX) {
-        this.#swipedForward()
+        this.#swipedRight()
+      } else {
+        this.#swipedLeft()
       }
     }
   }
 
-  #swipedForward() {
-    this.buttonTarget.click()
+  #swipedLeft() {
+    this.dispatch("swipe-left")
+  }
+
+  #swipedRight() {
+    this.dispatch("swipe-right")
   }
 }
