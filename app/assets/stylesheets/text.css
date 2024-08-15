@@ -99,9 +99,13 @@ b, strong {
   font-size: 0.85em;
 }
 
+pre {
+  overflow-x: auto;
+  text-wrap: nowrap;
+}
+
 code {
   padding: 0.1em 0.3em;
-  white-space: pre-wrap;
 }
 
 :is(pre, .pre) {
