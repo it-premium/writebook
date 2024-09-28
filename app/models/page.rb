@@ -1,5 +1,5 @@
 class Page < ApplicationRecord
-  include Leafable
+  include Leafable, Searchable
 
   cattr_accessor :preview_renderer do
     renderer = Redcarpet::Render::HTML.new(ActionText::Markdown::DEFAULT_RENDERER_OPTIONS)
@@ -13,7 +13,11 @@ class Page < ApplicationRecord
   end
 
   private
+    def body_text
+      body.content.to_s
+    end
+
     def body_preview
-      body.content.to_s.first(1024)
+      body_text.first(1024)
     end
 end
