@@ -1,3 +1,6 @@
-<%= link_to leafable_slug_path(page.leaf), class: "search__result", target: "_top" do %>
+<%= link_to edit_leafable_path(page.leaf), class: "search__result hide_from_reading_mode", target: "_top" do %>
+  <strong>[<%= page.leaf.title %>]:</strong> <%= page.match.html_safe %>
+<% end %>
+<%= link_to leafable_slug_path(page.leaf), class: "search__result hide_from_edit_mode", target: "_top" do %>
   <strong>[<%= page.leaf.title %>]:</strong> <%= page.match.html_safe %>
 <% end %>
