@@ -11,7 +11,7 @@ class Books::SearchesController < ApplicationController
 
   private
     def query
-      params[:search]&.gsub(/[^[:word:]]/, ' ')
+      params[:search]&.gsub(/[^[:word:]]/, " ")
     end
 
     def book_pages
