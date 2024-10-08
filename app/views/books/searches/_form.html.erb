@@ -1,3 +1,6 @@
 <%= form_with url: book_search_url(book) do |f| %>
-  <%= f.search_field :search, autofocus: true, class: "search_input" %>
+  <label class="flex align-center gap input input--actor txt-medium">
+    <%= image_tag "search.svg", aria: { hidden: "true" }, size: 30, class: "colorize--black" %>
+    <%= f.search_field :search, class: "search__input input full-width", autofocus: true, placeholder: "Type to find something in this book…" %>
+  </label>
 <% end %>

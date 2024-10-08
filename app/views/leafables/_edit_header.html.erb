@@ -3,8 +3,6 @@
 
   <%= link_to_previous_leafable(leaf, hotkey: false, for_edit: true) %>
 
-  <%= search_button(book) %>
-
   <div class="breadcrumbs">
     <%= render "books/index_link" %>
     <span class="flex-item-no-shrink">▸</span>
@@ -19,4 +17,6 @@
     <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Enter fullscreen</span>
   </button>
+
+  <%= search_button(@book) %>
 </nav>

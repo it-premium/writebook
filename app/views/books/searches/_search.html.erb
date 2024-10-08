@@ -1,7 +1,17 @@
-<div data-controller="dialog">
-  <button data-action="click->dialog#open">Search</button>
+<div data-controller="dialog" data-action="keydown.ctrl+space@document->dialog#open keydown.esc->dialog#close">
+  <button data-action="click->dialog#open" class="btn" title="Search (control + space)">
+    <%= image_tag "search.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Search</span>
+  </button>
 
-  <dialog data-dialog-target="menu" class="search_modal">
+  <dialog data-dialog-target="dialog" class="search__modal dialog panel shadow">
+    <form method="dialog">
+      <button class="btn panel__close" title="Close (esc)">
+        <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Close</span>
+      </button>
+    </form>
+
     <%= turbo_frame_tag :search do %>
       <%= render "books/searches/form", book: book %>
     <% end %>

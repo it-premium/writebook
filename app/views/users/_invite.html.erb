@@ -15,13 +15,13 @@
         <span class="for-screen-reader">Show join link QR code</span>
       <% end %>
 
-      <dialog class="dialog panel shadow" data-dialog-target="menu"">
+      <dialog class="dialog panel shadow" data-dialog-target="dialog">
         <%= qr_code_image(url) %>
 
-        <form method="dialog" class="margin-block-start flex justify-center">
-          <button class="btn">
+        <form method="dialog" class="flex justify-center">
+          <button class="btn panel__close" title="Close (esc)">
             <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
-            <span class="for-screen-reader">Close</span>
+            <span class="for-screen-reader">Close (esc)</span>
           </button>
         </form>
       </dialog>

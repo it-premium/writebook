@@ -1,13 +1,13 @@
 <%= turbo_frame_tag :search do %>
   <%= render "books/searches/form", book: book %>
 
-  <div class="search__results">
+  <div class="search__results flex flex-column margin-block-start">
     <% if @pages.any? %>
       <% @pages.each do |page| %>
         <%= render "books/searches/result", page: page %>
       <% end %>
     <% else %>
-      <p class="search__no_matches">No matches!</p>
+      <p class="search__no_matches txt-align-center">No matches.</p>
     <% end %>
   </div>
 <% end %>

@@ -20,8 +20,6 @@
       <span class="for-screen-reader">Go back</span>
     <% end %>
 
-    <%= search_button(@book) %>
-
     <span class="btn btn--placeholder placeholder-start" aria-hidden="true"></span>
 
     <div class="breadcrumbs">
@@ -38,6 +36,8 @@
       <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Enter fullscreen</span>
     </button>
+
+    <%= search_button(@book) %>
 
     <% if @book.editable? %>
       <%= link_to edit_book_path(@book), class: "btn settings" do %>

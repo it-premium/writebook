@@ -1,26 +1,18 @@
-.search_modal {
-  width: 80ch;
-  max-width: 80%;
+.search__modal {
+  --panel-size: 80ch;
 }
 
-.search_input {
-  width: 100%;
-  border: none;
-  margin-bottom: 2rem;
-}
+.search__result {
+  border-radius: 0.5em;
+  padding: 0.5em 0.75em;
 
-.search__results {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  @media (hover: hover) {
+    --hover-size: 0;
+    --outline-color: var(--color-selected-dark);
 
-  .search__result {
-    a {
-      text-decoration: none;
+    &:focus-visible,
+    &:hover {
+      background-color: var(--color-selected);
     }
-  }
-
-  .search__no_matches {
-    text-align: center;
   }
 }
