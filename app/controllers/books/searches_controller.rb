@@ -3,7 +3,7 @@ class Books::SearchesController < ApplicationController
 
   def create
     @leaves = if search.present?
-      book_leaves.highlight_matches(search).limit(50)
+      @book.leaves.highlight_matches(search).favoring_title.limit(50)
     else
       Leaf.none
     end
@@ -14,9 +14,5 @@ class Books::SearchesController < ApplicationController
       params[:search]&.gsub(/[^[:word:]"]/, " ").tap do |search|
         return nil if search.count('"').odd?
       end
-    end
-
-    def book_leaves
-      @book.leaves.positioned
     end
 end

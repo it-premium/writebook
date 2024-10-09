@@ -17,6 +17,8 @@ module Leaf::Searchable
         "highlight(leaf_search_index, 0, '<mark>', '</mark>') as title_match",
         "snippet(leaf_search_index, 1, '<mark>', '</mark>', '...', 20) as content_match")
     }
+
+    scope :favoring_title, -> { order(Arel.sql("bm25(leaf_search_index, 2.0)")) }
   end
 
   class_methods do
