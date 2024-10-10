@@ -52,7 +52,7 @@ module Leaf::Searchable
 
   private
     def searchable?
-      searchable_content.present?
+      searchable_content
     end
 
     def create_in_search_index
