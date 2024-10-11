@@ -31,15 +31,6 @@ module Leaf::Searchable
         terms
       end
 
-      def perform_search(terms)
-        joins("join leaf_search_index on leaves.id = leaf_search_index.rowid")
-          .where("leaf_search_index match ?", terms)
-          .select(
-            "leaves.*",
-            "highlight(leaf_search_index, 0, '<mark>', '</mark>') as title_match",
-            "snippet(leaf_search_index, 1, '<mark>', '</mark>', '...', 20) as content_match")
-      end
-
       def remove_invalid_search_characters(terms)
         terms.gsub(/[^\w"]/, " ")
       end
@@ -50,6 +41,15 @@ module Leaf::Searchable
         else
           terms.gsub("\"", " ")
         end
+      end
+
+      def perform_search(terms)
+        joins("join leaf_search_index on leaves.id = leaf_search_index.rowid")
+          .where("leaf_search_index match ?", terms)
+          .select(
+            "leaves.*",
+            "highlight(leaf_search_index, 0, '<mark>', '</mark>') as title_match",
+            "snippet(leaf_search_index, 1, '<mark>', '</mark>', '...', 20) as content_match")
       end
   end
 
