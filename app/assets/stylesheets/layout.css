@@ -49,6 +49,7 @@ body {
 :where(#footer) {
   grid-area: footer;
   max-inline-size: 100vw;
+  view-transition-name: footer;
 
   > nav {
     padding-inline: var(--inline-space);
@@ -66,6 +67,7 @@ body {
   grid-area: header;
   max-inline-size: 100vw;
   transition: margin-inline-start 0.2s ease-out;
+  view-transition-name: header;
 
   :has(#sidebar-toggle:checked) & {
     @media (min-width: 70ch) {
@@ -122,6 +124,7 @@ body {
   overflow: hidden;
   padding-inline: var(--inline-space);
   position: sticky;
+  view-transition-name: toolbar;
   z-index: 1;
 }
 
