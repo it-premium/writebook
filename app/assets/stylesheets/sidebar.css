@@ -1,5 +1,6 @@
 .sidebar__toggle {
   transition: margin-inline-end 0.2s ease-out;
+  z-index: 1;
 
   :has(#sidebar-toggle:checked) & {
     @media (min-width: 70ch) {
