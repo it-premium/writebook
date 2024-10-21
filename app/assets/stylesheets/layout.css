@@ -92,7 +92,7 @@ body {
 
 :where(#sidebar) {
   background-color: var(--color-subtle-light);
-  font-size: var(--font-small-responsive);
+  font-size: var(--font-medium-responsive);
   grid-area: sidebar;
   inline-size: 25vw;
   block-size: 100%;
