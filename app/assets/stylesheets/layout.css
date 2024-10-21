@@ -68,6 +68,7 @@ body {
   max-inline-size: 100vw;
   transition: margin-inline-start 0.2s ease-out;
   view-transition-name: header;
+  z-index: 1;
 
   :has(#sidebar-toggle:checked) & {
     @media (min-width: 70ch) {
@@ -98,8 +99,10 @@ body {
   font-size: var(--font-medium-responsive);
   grid-area: sidebar;
   inline-size: 25vw;
+  inset: 0 auto 0 0;
   overflow: auto;
   padding-block-start: var(--btn-size);
+  position: absolute;
   transition: margin-inline-start 0.2s ease-out;
 
   :has(#sidebar-toggle:checked) & {
