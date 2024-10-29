@@ -10,11 +10,11 @@
 
 <% if @leaf.section? %>
   <div class="page--section <%= "theme--dark" if @leaf.leafable.theme == "dark" %>">
-    <h1><%= simple_format @leaf.section.body %></h1>
+    <h1><%= highlight_searched_content @leaf, simple_format(@leaf.section.body), params[:search] %></h1>
   </div>
 <% elsif @leaf.page? %>
   <div class="page--page" data-controller="scroll-to-highlight">
-    <%= highlight_page_body(@leaf.page, params[:search]) %>
+    <%= highlight_searched_content @leaf, sanitize_content(@leaf.page.body.to_html), params[:search] %>
   </div>
 <% elsif @leaf.picture? %>
   <figure class="page--picture flex flex-column align-center gap margin-none">
