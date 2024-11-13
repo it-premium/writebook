@@ -17,4 +17,6 @@
     <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Enter fullscreen</span>
   </button>
+
+  <%= render "books/searches/search", book: @book %>
 </nav>

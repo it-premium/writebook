@@ -10,6 +10,10 @@ module Leafable
     delegate :title, to: :leaf
   end
 
+  def searchable_content
+    nil
+  end
+
   class_methods do
     def leafable_name
       @leafable_name ||= ActiveModel::Name.new(self).singular.inquiry

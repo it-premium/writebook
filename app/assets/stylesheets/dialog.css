@@ -14,7 +14,7 @@
       transform var(--speed);
 
   &::backdrop {
-    background-color: var(--color-ink);
+    background-color: var(--color-always-black);
     opacity: 0;
     transform: translateY(0);
     transition:

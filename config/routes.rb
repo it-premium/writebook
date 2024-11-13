@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       namespace :leaves do
         resources :moves, only: :create
       end
+
+      resource :search
     end
 
     resources :sections

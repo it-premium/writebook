@@ -22,6 +22,14 @@ class LeafablesControllerTest < ActionDispatch::IntegrationTest
     assert_select "p", "This is such a great handbook."
   end
 
+  test "show highlights search terms" do
+    Leaf.reindex_all
+    get leafable_slug_path(leaves(:welcome_page)), params: { search: "great" }
+
+    assert_response :success
+    assert_select "mark", "great"
+  end
+
   test "show does not allow public access to an unpublished book" do
     sign_out
 

@@ -8,12 +8,25 @@ class Page < ApplicationRecord
 
   has_markdown :body
 
+  def searchable_content
+    plain_text
+  end
+
   def html_preview
-    preview_renderer.render(body_preview)
+    rendered_html(markdown_source.first(1024))
   end
 
   private
-    def body_preview
-      body.content.to_s.first(1024)
+    def plain_text
+      html_body = rendered_html(markdown_source)
+      ActionText::Content.new(html_body).to_plain_text
+    end
+
+    def rendered_html(source)
+      preview_renderer.render(source)
+    end
+
+    def markdown_source
+      body.content.to_s
     end
 end

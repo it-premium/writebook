@@ -37,6 +37,8 @@
       <span class="for-screen-reader">Enter fullscreen</span>
     </button>
 
+    <%= render "books/searches/search", book: @book %>
+
     <% if @book.editable? %>
       <%= link_to edit_book_path(@book), class: "btn settings" do %>
         <%= image_tag "settings.svg", aria: { hidden: true }, size: 24 %>
