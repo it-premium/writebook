@@ -5,7 +5,7 @@ ruby file: ".ruby-version"
 gem "rails", github: "rails/rails"
 
 # Drivers
-gem "sqlite3", "~> 2.0"
+gem "sqlite3", "~> 2.2"
 gem "redis", ">= 4.0.1"
 
 # Deployment
@@ -24,7 +24,7 @@ gem "stimulus-rails"
 # Other
 gem "jbuilder"
 gem "redcarpet", "~> 3.6"
-gem "rouge", "~> 4.4"
+gem "rouge", "~> 4.5"
 gem "bcrypt", "~> 3.1.7"
 gem "image_processing", "~> 1.13"
 gem "rqrcode"
