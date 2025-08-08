@@ -16,6 +16,10 @@ class LeafablesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.md { render plain: @leaf.leafable.markdown_content, content_type: Mime[:markdown] }
+    end
   end
 
   def edit

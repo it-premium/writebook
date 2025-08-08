@@ -10,8 +10,10 @@ module Leafable
     delegate :title, to: :leaf
   end
 
+  def markdown_content
+  end
+
   def searchable_content
-    nil
   end
 
   class_methods do
