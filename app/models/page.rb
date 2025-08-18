@@ -8,16 +8,16 @@ class Page < ApplicationRecord
 
   has_markdown :body
 
-  def markdown_content
-    body.content
-  end
-
   def searchable_content
     plain_text
   end
 
   def html_preview
     rendered_html(markdown_source.first(1024))
+  end
+
+  def to_markdown
+    body.content
   end
 
   private

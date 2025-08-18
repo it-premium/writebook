@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby file: ".ruby-version"
 
-gem "rails", github: "rails/rails", ref: "c6fae0aca4b6f66f2f2367b7f44ffbe69aa41559"
+gem "rails", github: "rails/rails", ref: "f32d09e2e8228c720a49c368de578559e37d7731"
 
 # Drivers
 gem "sqlite3", "~> 2.5"

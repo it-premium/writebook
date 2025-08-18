@@ -5,7 +5,7 @@ class Picture < ApplicationRecord
     attachable.variant :large, resize_to_limit: [ 1500, 1500 ]
   end
 
-  def markdown_content
+  def to_markdown
     "#{caption.presence || image&.attachment&.slug || "Image"}"
   end
 end
