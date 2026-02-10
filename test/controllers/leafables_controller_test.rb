@@ -71,8 +71,8 @@ class LeafablesControllerTest < ActionDispatch::IntegrationTest
     get leafable_slug_path(leaves(:welcome_page), format: :md)
 
     assert_response :success
-    assert_includes response.body, "<a href='http://example.com'>"
-    assert_not_includes response.body, "&lt;"
+    assert_in_body "<a href='http://example.com'>"
+    assert_not_in_body "&lt;"
   end
 
   test "create" do

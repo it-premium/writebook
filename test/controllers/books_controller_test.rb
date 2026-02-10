@@ -94,8 +94,8 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     get book_slug_path(books(:handbook), format: :md)
 
     assert_response :success
-    assert_includes response.body, "# Welcome Content"
-    assert_includes response.body, "# Summary Content"
+    assert_in_body "# Welcome Content"
+    assert_in_body "# Summary Content"
   end
 
   test "show with markdown format does not escape HTML" do
@@ -104,7 +104,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     get book_slug_path(books(:handbook), format: :md)
 
     assert_response :success
-    assert_includes response.body, "<div class='test'>"
-    assert_not_includes response.body, "&lt;"
+    assert_in_body "<div class='test'>"
+    assert_not_in_body "&lt;"
   end
 end

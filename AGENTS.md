@@ -18,6 +18,21 @@ get book_slug_path(books(:handbook))
 get book_slug_url(books(:handbook))
 ```
 
+### Response Body Assertions
+Use `assert_in_body` and `assert_not_in_body` to check if text is present or absent in the response body without DOM manipulation.
+
+**Preferred:**
+```ruby
+assert_in_body "Expected content"
+assert_not_in_body "Unexpected content"
+```
+
+**Avoid:**
+```ruby
+assert_includes response.body, "Expected content"
+assert_not_includes response.body, "Unexpected content"
+```
+
 ## Controller Conventions
 
 ### Simplified respond_to Blocks
