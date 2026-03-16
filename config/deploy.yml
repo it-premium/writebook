@@ -1,5 +1,0 @@
-image: registry.kevinmcconnell.dev/workbook
-host: once-workbook-public-101
-tls_domain: workbook.37signals.com
-ssh_user: app
-arch: linux/amd64
