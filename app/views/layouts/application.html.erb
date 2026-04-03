@@ -29,27 +29,6 @@
     <%= custom_styles_tag %>
 
     <%= javascript_importmap_tags %>
-
-    <script type="module">
-      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-      mermaid.initialize({ startOnLoad: false, theme: window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "default" });
-
-      const MERMAID_KEYWORDS = /^(flowchart|graph|sequenceDiagram|classDiagram|stateDiagram|erDiagram|gantt|pie|gitGraph|mindmap|timeline|sankey|xychart|block)\b/;
-
-      function renderMermaid() {
-        document.querySelectorAll("code.language-mermaid, pre.highlight.plaintext > code").forEach((el) => {
-          if (!el.classList.contains("language-mermaid") && !MERMAID_KEYWORDS.test(el.textContent.trim())) return;
-          const div = document.createElement("div");
-          div.className = "mermaid";
-          div.textContent = el.textContent;
-          el.closest("pre").replaceWith(div);
-        });
-        mermaid.run();
-      }
-
-      renderMermaid();
-      document.addEventListener("turbo:load", renderMermaid);
-    </script>
   </head>
 
   <body data-controller="fullscreen lightbox touch">
